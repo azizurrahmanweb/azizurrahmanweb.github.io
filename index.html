@@ -101,16 +101,16 @@
 
         .nav-links {
             display: flex;
-            gap: 0.25rem;
+            gap: 0.15rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            padding: 0.5rem 0.9rem;
+            padding: 0.5rem 0.7rem;
             border-radius: 4px;
             transition: all 0.2s ease;
         }
@@ -143,6 +143,7 @@
                 linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             pointer-events: none;
+            z-index: 0;
         }
 
         .formula {
@@ -151,6 +152,7 @@
             color: rgba(255, 255, 255, 0.06);
             font-size: 0.9rem;
             pointer-events: none;
+            z-index: 0;
         }
 
         .formula-1 { top: 15%; left: 5%; }
@@ -167,7 +169,7 @@
             gap: 4rem;
             align-items: center;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero-logo-section {
@@ -190,6 +192,8 @@
 
         .hero-content {
             color: white;
+            position: relative;
+            z-index: 3;
         }
 
         .hero-content h1 {
@@ -230,13 +234,16 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            padding: 0.7rem 1.4rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 4px;
             text-decoration: none;
             font-size: 0.9rem;
@@ -244,6 +251,8 @@
             transition: all 0.2s ease;
             border: none;
             cursor: pointer;
+            position: relative;
+            z-index: 10;
         }
 
         .btn-primary {
@@ -256,34 +265,14 @@
         }
 
         .btn-outline {
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
             color: white;
             background: transparent;
         }
 
         .btn-outline:hover {
             border-color: var(--accent-light);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .btn-dark {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-dark:hover {
-            background: var(--accent-dark);
-        }
-
-        .btn-outline-dark {
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            background: transparent;
-        }
-
-        .btn-outline-dark:hover {
-            background: var(--accent);
-            color: white;
+            background: rgba(255,255,255,0.1);
         }
 
         /* Section Styles */
@@ -323,6 +312,167 @@
             color: var(--text-secondary);
             font-size: 1rem;
             margin-left: 1.1rem;
+        }
+
+        /* Lab Section */
+        #lab {
+            background: var(--bg-secondary);
+        }
+
+        .lab-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .lab-text h3 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .lab-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .lab-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .lab-text ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lab-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .lab-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+        }
+
+        .highlight-card h4 {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card .number {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .highlight-card .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* People Section */
+        #people {
+            background: var(--bg-primary);
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .person-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .person-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .person-card.director {
+            border: 2px solid var(--accent);
+            background: linear-gradient(to bottom, rgba(0,121,107,0.03), white);
+        }
+
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .person-card h4 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .person-card .role {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .person-card .affiliation {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .person-card .research {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .person-card .links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .person-card .links a {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .person-card .links a:hover {
+            text-decoration: underline;
         }
 
         /* About Section */
@@ -891,6 +1041,10 @@
                 justify-content: center;
             }
 
+            .lab-content {
+                grid-template-columns: 1fr;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
             }
@@ -954,7 +1108,8 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
+                <li><a href="#lab">Lab</a></li>
+                <li><a href="#people">People</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#teaching">Teaching</a></li>
@@ -992,10 +1147,10 @@
                     <span>🎓 Associate Professor (on study leave), Jahangirnagar University</span>
                 </div>
                 <div class="hero-buttons">
-                    <a href="Azizur_Rahman_CV.pdf" download="Azizur_Rahman_CV.pdf" class="btn btn-primary">
+                    <a href="Azizur_Rahman_CV.pdf" class="btn btn-primary" download>
                         ↓ Download CV
                     </a>
-                    <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" class="btn btn-outline" target="_blank" rel="noopener">
                         Google Scholar
                     </a>
                     <a href="mailto:rahmana1@myumanitoba.ca" class="btn btn-outline">
@@ -1006,33 +1161,147 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Lab Section -->
+    <section id="lab">
+        <div class="container">
+            <div class="section-header">
+                <h2>About TASiLab</h2>
+                <p>Theoretical and Applied Statistical Innovation Laboratory</p>
+            </div>
+            <div class="lab-content">
+                <div class="lab-text">
+                    <h3>Mission</h3>
+                    <p>
+                        <strong>TASiLab</strong> (Theoretical and Applied Statistical Innovation Lab) is a research group 
+                        dedicated to developing novel statistical methodologies that bridge the gap between rigorous 
+                        theoretical foundations and practical real-world applications. Founded by Azizur Rahman, the lab 
+                        focuses on advancing statistical science in biostatistics, public health, and data science.
+                    </p>
+
+                    <h3>Research Philosophy</h3>
+                    <p>
+                        We believe that impactful statistical research must be both theoretically sound and practically 
+                        applicable. Our work emphasizes:
+                    </p>
+                    <ul>
+                        <li><strong>Methodological Rigor:</strong> Developing statistically principled approaches with strong theoretical foundations</li>
+                        <li><strong>Computational Efficiency:</strong> Creating fast algorithms suitable for large-scale health data</li>
+                        <li><strong>Real-World Impact:</strong> Applying methods to solve pressing public health challenges</li>
+                        <li><strong>Reproducibility:</strong> Ensuring all research is transparent and reproducible</li>
+                    </ul>
+
+                    <h3>Core Research Areas</h3>
+                    <p>
+                        Our primary research thrust is in <strong>fast approximate inference</strong> using variational Bayes 
+                        methods for intensive longitudinal data. We also work extensively on functional data analysis for 
+                        mortality and disease forecasting, machine learning methods for health outcome prediction, and 
+                        multi-state Markov models for disease progression modeling.
+                    </p>
+                    <p>
+                        The lab maintains active collaborations with researchers at the University of Manitoba, Jahangirnagar 
+                        University, and government health agencies in Manitoba, Canada.
+                    </p>
+                </div>
+                <div class="lab-highlights">
+                    <div class="highlight-card">
+                        <h4>Publications</h4>
+                        <div class="number">25+</div>
+                        <div class="label">Peer-reviewed articles</div>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Research Areas</h4>
+                        <div class="number">6</div>
+                        <div class="label">Core focus areas</div>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Awards</h4>
+                        <div class="number">4</div>
+                        <div class="label">Competition wins</div>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>Grants</h4>
+                        <div class="number">6</div>
+                        <div class="label">As Principal Investigator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- People Section -->
+    <section id="people">
+        <div class="container">
+            <div class="section-header">
+                <h2>People</h2>
+                <p>Meet the TASiLab team</p>
+            </div>
+            <div class="people-grid">
+                <div class="person-card director">
+                    <div class="person-avatar">AR</div>
+                    <h4>Azizur Rahman</h4>
+                    <div class="role">Lab Director & Principal Investigator</div>
+                    <div class="affiliation">PhD Candidate, University of Manitoba<br>Associate Professor, Jahangirnagar University</div>
+                    <div class="research">Variational Bayes, Functional Data Analysis, Biostatistics</div>
+                    <div class="links">
+                        <a href="mailto:rahmana1@myumanitoba.ca">Email</a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener">Scholar</a>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">FH</div>
+                    <h4>Faruk Hasan</h4>
+                    <div class="role">Research Assistant</div>
+                    <div class="affiliation">Data Scientist, City Bank PLC<br>MSc Statistics, Jahangirnagar University</div>
+                    <div class="research">Credit Risk Modeling, Multi-state Markov Models, Machine Learning</div>
+                    <div class="links">
+                        <a href="mailto:faruk@example.com">Email</a>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">MM</div>
+                    <h4>Munniara Yesmin Munni</h4>
+                    <div class="role">Graduate Researcher (Alumni)</div>
+                    <div class="affiliation">MSc Statistics, Jahangirnagar University</div>
+                    <div class="research">Functional Mixed Effects Models, Climate Statistics</div>
+                </div>
+                <div class="person-card">
+                    <div class="person-avatar">JP</div>
+                    <h4>Jay Panchal</h4>
+                    <div class="role">Summer Research Student (Alumni)</div>
+                    <div class="affiliation">MITACS Intern, University of Manitoba</div>
+                    <div class="research">COVID-19 Analysis, Functional Data Analysis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Director Section -->
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <h2>About</h2>
+                <h2>About the Director</h2>
                 <p>Background and education</p>
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <h3>Research Focus</h3>
+                    <h3>Biography</h3>
                     <p>
-                        TASiLab (Theoretical and Applied Statistical Innovation Lab) develops novel statistical 
-                        methodologies with applications in biostatistics, public health, and data science. Our 
-                        primary focus is on fast approximate inference using variational Bayes methods for 
-                        intensive longitudinal data analysis.
+                        <strong>Azizur Rahman</strong> is a PhD Candidate in the Department of Community Health Sciences 
+                        at the University of Manitoba, working under the supervision of Dr. Depeng Jiang. His doctoral 
+                        research focuses on developing fast approximate inference methods for multilevel threshold 
+                        autoregressive models using variational Bayes approaches.
                     </p>
                     <p>
-                        We combine rigorous theoretical development with practical applications, working on 
-                        problems ranging from functional data analysis for mortality forecasting to machine 
-                        learning methods for health outcome prediction.
+                        He is currently on study leave from his position as Associate Professor at the Department of 
+                        Statistics, Jahangirnagar University, Bangladesh, where he has been a faculty member since 2014. 
+                        He also serves as a Program Evaluator at the Social Innovation Office, Government of Manitoba.
                     </p>
 
                     <h3>Education</h3>
                     <p>
                         <strong>PhD Candidate</strong> — Community Health Sciences, University of Manitoba (2019–Present)<br>
                         <em>Thesis: Fast Approximate Inference for Discrete and Continuous Time Models in Intensive Longitudinal Data</em><br>
-                        <em>Supervisor: Dr. Depeng Jiang</em>
+                        <em>Supervisor: Dr. Depeng Jiang, Professor</em>
                     </p>
                     <p>
                         <strong>M.Phil in Statistics</strong> — Jahangirnagar University, Bangladesh (2017)<br>
@@ -1041,7 +1310,7 @@
                     </p>
                 </div>
                 <div class="info-card">
-                    <h4>Quick Info</h4>
+                    <h4>Contact Information</h4>
                     <div class="info-item">
                         <div class="label">Email</div>
                         <div class="value"><a href="mailto:rahmana1@myumanitoba.ca">rahmana1@myumanitoba.ca</a></div>
@@ -1055,16 +1324,16 @@
                         <div class="value">Winnipeg, Manitoba, Canada</div>
                     </div>
                     <div class="info-item">
-                        <div class="label">Affiliation</div>
-                        <div class="value">University of Manitoba<br>Jahangirnagar University</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="label">Languages</div>
-                        <div class="value">R, Python, SAS, LaTeX</div>
+                        <div class="label">Affiliations</div>
+                        <div class="value">University of Manitoba<br>Jahangirnagar University<br>Government of Manitoba</div>
                     </div>
                     <div class="info-item">
                         <div class="label">Editorial Role</div>
-                        <div class="value">Statistics Editor, Bangladesh Journal of Infectious Diseases</div>
+                        <div class="value">Statistics Editor<br>Bangladesh Journal of Infectious Diseases</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Reviewer</div>
+                        <div class="value">Spatial and Spatio-temporal Epidemiology<br>J. Health, Population and Nutrition</div>
                     </div>
                 </div>
             </div>
@@ -1192,14 +1461,6 @@
                     </div>
                 </div>
                 <div class="pub-item">
-                    <div class="pub-year">2023</div>
-                    <div class="pub-content">
-                        <h4>Forecasting Hourly Ozone Concentration using Functional Time Series Model</h4>
-                        <div class="authors"><strong>Rahman, A.</strong> & Nasher, N.M.R.</div>
-                        <div class="journal">Journal of Environmental Modeling and Assessment, Springer</div>
-                    </div>
-                </div>
-                <div class="pub-item">
                     <div class="pub-year">2021</div>
                     <div class="pub-content">
                         <h4>Regional and Temporal Pattern of Influenza: Application of Functional Data Analysis</h4>
@@ -1209,7 +1470,7 @@
                 </div>
             </div>
             <div class="view-all">
-                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer">
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener">
                     View all publications on Google Scholar →
                 </a>
             </div>
@@ -1252,22 +1513,22 @@
                     <div class="teaching-item">
                         <div class="period">2023</div>
                         <div class="title">Munniara Yesmin Munni (MSc)</div>
-                        <div class="institution">Temporal and Regional Variations of Effects of Daily Temperature on Annual Precipitation: A Functional Mixed Effect Model Approach</div>
+                        <div class="institution">Temporal and Regional Variations of Effects of Daily Temperature on Annual Precipitation</div>
                     </div>
                     <div class="teaching-item">
                         <div class="period">2022</div>
-                        <div class="title">Jay Panchal (MITACS Summer Student)</div>
-                        <div class="institution">Application of functional data analysis to observation of COVID-19 prevalence in the USA (Co-supervisor)</div>
+                        <div class="title">Jay Panchal (MITACS Summer)</div>
+                        <div class="institution">Application of FDA to COVID-19 prevalence in the USA (Co-supervisor)</div>
                     </div>
                     <div class="teaching-item">
                         <div class="period">2017</div>
                         <div class="title">Piash Paul (MSc)</div>
-                        <div class="institution">Application of Akaike Information Criterion (AIC) in Outlier Detection</div>
+                        <div class="institution">Application of AIC in Outlier Detection</div>
                     </div>
                     <div class="teaching-item">
                         <div class="period">2017</div>
                         <div class="title">Arifa Tabassum Anika (BSc)</div>
-                        <div class="institution">Modeling Generalized Zero-Inflated Poisson Distribution for Torrential Rainfall</div>
+                        <div class="institution">Modeling Zero-Inflated Poisson Distribution for Torrential Rainfall</div>
                     </div>
                 </div>
             </div>
@@ -1286,31 +1547,25 @@
                     <div class="period">January 2023 – Present</div>
                     <h4>Program Evaluator (Mixed Method, SS3)</h4>
                     <div class="org">Social Innovation Office, Department of Families, Government of Manitoba</div>
-                    <p>Performing data cleaning and linkages. Conducting multivariate statistical analyses and visualizations. Developing predictive models to identify risk factors. Creating demand and supply distribution mapping for MECL project using R.</p>
+                    <p>Data cleaning, linkages, multivariate analyses, predictive modeling for risk factors, demand/supply mapping for MECL project.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="period">January 2021 – March 2022</div>
                     <h4>Quantitative Data Analyst</h4>
                     <div class="org">MHA Evaluation Program, Government of Manitoba</div>
-                    <p>Analysis and evaluation of Mental Health and Addictions programs. Statistical modeling and reporting under supervision of Dr. Brian Rush, VIRGO Planning and Evaluation Consultants Inc.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="period">June 2020 – October 2020</div>
-                    <h4>Step Student (Research Analyst)</h4>
-                    <div class="org">MHA Evaluation, Healthy Child Manitoba Office (SIO)</div>
-                    <p>Research analysis under supervision of Dr. Monica Novotny.</p>
+                    <p>Analysis and evaluation of Mental Health and Addictions programs.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="period">May 2019 – August 2019</div>
                     <h4>Research Assistant</h4>
                     <div class="org">Department of Community Health Sciences, University of Manitoba</div>
-                    <p>Working with Dr. Depeng Jiang on statistical methodology research.</p>
+                    <p>Statistical methodology research with Dr. Depeng Jiang.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="period">May 2017 – August 2017</div>
                     <h4>Consultant (Statistician)</h4>
                     <div class="org">Bangabandhu Sheikh Mujib Medical University</div>
-                    <p>Prevalence and determinants of child abuse and neglect among working children. Developing sampling design and statistical models.</p>
+                    <p>Sampling design and statistical modeling for child health research.</p>
                 </div>
             </div>
         </div>
@@ -1328,8 +1583,8 @@
                     <div class="award-icon">🏆</div>
                     <div class="award-content">
                         <div class="year">2023</div>
-                        <h4>First Prize - Poster Presentation (PhD Category)</h4>
-                        <p>CSSC Conference, Carleton University, Ottawa</p>
+                        <h4>First Prize - Poster Presentation (PhD)</h4>
+                        <p>CSSC Conference, Carleton University</p>
                     </div>
                 </div>
                 <div class="award-item">
@@ -1337,7 +1592,7 @@
                     <div class="award-content">
                         <div class="year">2022</div>
                         <h4>SSC Award Winner</h4>
-                        <p>Case Studies in Data Analysis Competition, Statistical Society of Canada</p>
+                        <p>Case Studies in Data Analysis Competition</p>
                     </div>
                 </div>
                 <div class="award-item">
@@ -1345,7 +1600,7 @@
                     <div class="award-content">
                         <div class="year">2021</div>
                         <h4>VADA Big Data Challenge Winner</h4>
-                        <p>Visual and Automated Disease Analytics Summer School</p>
+                        <p>Visual and Automated Disease Analytics</p>
                     </div>
                 </div>
                 <div class="award-item">
@@ -1353,7 +1608,7 @@
                     <div class="award-content">
                         <div class="year">2021</div>
                         <h4>AI4PH Big Data Challenge Winner</h4>
-                        <p>Artificial Intelligence for Public Health Summer Institute</p>
+                        <p>AI for Public Health Summer Institute</p>
                     </div>
                 </div>
                 <div class="award-item">
@@ -1361,15 +1616,15 @@
                     <div class="award-content">
                         <div class="year">2019–2021</div>
                         <h4>VADA Graduate Training Scholarship</h4>
-                        <p>NSERC, University of Manitoba & University of Victoria</p>
+                        <p>NSERC, UManitoba & UVictoria</p>
                     </div>
                 </div>
                 <div class="award-item">
                     <div class="award-icon">📚</div>
                     <div class="award-content">
                         <div class="year">2003–2007</div>
-                        <h4>University Grant Academic Merit Scholarship</h4>
-                        <p>Bangladesh</p>
+                        <h4>Academic Merit Scholarship</h4>
+                        <p>University Grant, Bangladesh</p>
                     </div>
                 </div>
             </div>
@@ -1449,10 +1704,10 @@
                 </div>
             </div>
             <div class="contact-buttons">
-                <a href="Azizur_Rahman_CV.pdf" download="Azizur_Rahman_CV.pdf" class="btn btn-light">
+                <a href="Azizur_Rahman_CV.pdf" class="btn btn-light" download>
                     ↓ Download Full CV
                 </a>
-                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" class="btn btn-outline-light" target="_blank" rel="noopener">
                     Google Scholar Profile
                 </a>
                 <a href="mailto:rahmana1@myumanitoba.ca" class="btn btn-outline-light">
@@ -1465,9 +1720,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="https://umanitoba.ca" target="_blank" rel="noopener noreferrer">University of Manitoba</a>
-            <a href="https://juniv.edu" target="_blank" rel="noopener noreferrer">Jahangirnagar University</a>
-            <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://umanitoba.ca" target="_blank" rel="noopener">University of Manitoba</a>
+            <a href="https://juniv.edu" target="_blank" rel="noopener">Jahangirnagar University</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         </div>
         <p>© 2024 TASiLab — Theoretical and Applied Statistical Innovation Lab | Azizur Rahman</p>
     </footer>
@@ -1477,6 +1732,7 @@
             document.getElementById('navLinks').classList.toggle('active');
         }
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1488,6 +1744,7 @@
             });
         });
 
+        // Nav shadow on scroll
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
