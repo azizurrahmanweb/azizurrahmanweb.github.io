@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TASiLab | Theoretical and Applied Statistical Innovation Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #faf9f7;
-            --bg-secondary: #f0eeea;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16162a;
             --text-primary: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --accent: #2c5f4a;
-            --accent-light: #3d8b6a;
-            --border: #d4d0c8;
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Source Sans 3', -apple-system, sans-serif;
+            --text-secondary: #555;
+            --text-light: #777;
+            --accent: #00796B;
+            --accent-light: #4DB6AC;
+            --accent-dark: #004D40;
+            --border: #e0e0e0;
+            --code-bg: #f8f8f8;
+            --serif: 'Crimson Pro', Georgia, serif;
+            --sans: 'Inter', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -33,7 +39,8 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 400;
+            font-size: 15px;
         }
 
         /* Navigation */
@@ -41,64 +48,72 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(250, 249, 247, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0.75rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-logo-text .name {
             font-family: var(--serif);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--accent);
-            text-decoration: none;
-            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        .nav-logo-text .tagline {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 0.25rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 400;
-            letter-spacing: 0.03em;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 0.9rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            background: rgba(0, 121, 107, 0.08);
         }
 
         /* Hero Section */
@@ -106,12 +121,13 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            padding: 6rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
+        /* Statistical background pattern */
         .hero::before {
             content: '';
             position: absolute;
@@ -119,89 +135,138 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(44, 95, 74, 0.03) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(44, 95, 74, 0.02) 0%, transparent 50%);
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
         }
 
-        .hero-content {
-            max-width: 900px;
-            text-align: center;
+        /* Floating formulas */
+        .formula {
+            position: absolute;
+            font-family: var(--mono);
+            color: rgba(255, 255, 255, 0.06);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .formula-1 { top: 15%; left: 5%; }
+        .formula-2 { top: 25%; right: 8%; }
+        .formula-3 { bottom: 30%; left: 10%; }
+        .formula-4 { bottom: 20%; right: 5%; }
+        .formula-5 { top: 60%; left: 3%; }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
             position: relative;
-            animation: fadeInUp 1s ease-out;
+            z-index: 1;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-logo-section {
+            text-align: center;
         }
 
-        .hero-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            padding: 0.5rem 1.5rem;
-            border: 1px solid var(--accent);
-            border-radius: 2rem;
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
         }
 
-        .hero h1 {
+        .hero-lab-name {
             font-family: var(--serif);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .hero-subtitle {
-            font-family: var(--serif);
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            font-style: italic;
-        }
-
-        .hero-description {
             font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.1em;
         }
 
-        .hero-affiliation {
+        .hero-content {
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-light);
+        }
+
+        .hero-intro {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .hero-meta span {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            gap: 0.5rem;
         }
 
-        .hero-affiliation span {
-            width: 40px;
-            height: 1px;
-            background: var(--border);
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        /* Sections */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-light);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Section Styles */
         section {
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
         }
 
         .container {
@@ -210,21 +275,32 @@
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-header h2 {
             font-family: var(--serif);
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .section-header p {
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1rem;
+            margin-left: 1.1rem;
         }
 
         /* About Section */
@@ -234,128 +310,122 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
         }
 
-        .about-content h3 {
+        .about-text h3 {
             font-family: var(--serif);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
             color: var(--accent);
-        }
-
-        .about-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .director-card {
-            background: var(--bg-primary);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .director-card .label {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-
-        .director-card h4 {
-            font-family: var(--serif);
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .director-card .title {
-            color: var(--text-secondary);
             margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .director-card .former {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background: rgba(44, 95, 74, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .director-card .bio {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .director-links {
             margin-top: 1.5rem;
-            display: flex;
-            gap: 1rem;
         }
 
-        .director-links a {
+        .about-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .info-card h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item .label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .info-item .value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .info-item .value a {
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            transition: opacity 0.3s;
-        }
-
-        .director-links a:hover {
-            opacity: 0.7;
         }
 
         /* Research Section */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .research-card {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid transparent;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
         }
 
         .research-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0,121,107,0.1);
         }
 
         .research-card .number {
-            font-family: var(--serif);
-            font-size: 2.5rem;
+            font-family: var(--mono);
+            font-size: 0.75rem;
             color: var(--accent);
-            opacity: 0.3;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .research-card h3 {
             font-family: var(--serif);
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
         }
 
         .research-card p {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .research-card .tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--code-bg);
+            border-radius: 3px;
+            color: var(--text-secondary);
         }
 
         /* Publications Section */
@@ -363,158 +433,320 @@
             background: var(--bg-secondary);
         }
 
-        .publications-list {
+        .pub-list {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
-        .publication-item {
-            background: var(--bg-primary);
-            padding: 1.5rem 2rem;
+        .pub-item {
+            background: white;
+            padding: 1.25rem 1.5rem;
             border-radius: 6px;
             border-left: 3px solid var(--accent);
-            transition: transform 0.3s ease;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1rem;
+            align-items: start;
         }
 
-        .publication-item:hover {
-            transform: translateX(5px);
-        }
-
-        .publication-item .year {
-            font-size: 0.8rem;
+        .pub-year {
+            font-family: var(--mono);
+            font-size: 0.85rem;
             color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
-        .publication-item h4 {
+        .pub-content h4 {
             font-family: var(--serif);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
             line-height: 1.4;
         }
 
-        .publication-item .authors {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .publication-item .journal {
-            color: var(--text-secondary);
+        .pub-content .authors {
             font-size: 0.85rem;
-            font-style: italic;
-            margin-top: 0.5rem;
+            color: var(--text-secondary);
         }
 
-        /* Team Section */
-        .team-grid {
+        .pub-content .journal {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+
+        .view-all {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .view-all a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .view-all a:hover {
+            text-decoration: underline;
+        }
+
+        /* Teaching Section */
+        .teaching-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        .team-card {
-            text-align: center;
-            padding: 2rem;
+        .teaching-category h3 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .teaching-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .teaching-item:last-child {
+            border-bottom: none;
+        }
+
+        .teaching-item .period {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .teaching-item .title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .teaching-item .institution {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Experience Section */
+        #experience {
             background: var(--bg-secondary);
-            border-radius: 8px;
-            transition: transform 0.3s ease;
         }
 
-        .team-card:hover {
-            transform: translateY(-5px);
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
         }
 
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            transform: translateX(-4px);
+        }
+
+        .timeline-item .period {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h4 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .org {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .award-item {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .award-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-family: var(--serif);
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
 
-        .team-card h4 {
-            font-family: var(--serif);
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .team-card .role {
+        .award-content .year {
+            font-family: var(--mono);
+            font-size: 0.75rem;
             color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
         }
 
-        .team-card .affiliation {
-            color: var(--text-secondary);
+        .award-content h4 {
+            font-size: 0.95rem;
+            margin: 0.25rem 0;
+        }
+
+        .award-content p {
             font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h4 {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
         }
 
         /* Contact Section */
         #contact {
-            background: var(--text-primary);
-            color: var(--bg-primary);
+            background: var(--bg-dark);
+            color: white;
         }
 
         #contact .section-header h2 {
-            color: var(--bg-primary);
+            color: white;
+        }
+
+        #contact .section-header h2::before {
+            background: var(--accent-light);
         }
 
         #contact .section-header p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        .contact-item {
-            text-align: center;
-            padding: 2rem;
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .contact-item .icon {
-            width: 50px;
-            height: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.25rem;
-            font-size: 1.25rem;
+        .contact-card h4 {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
         }
 
-        .contact-item h4 {
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-item p, .contact-item a {
-            color: rgba(255, 255, 255, 0.7);
+        .contact-card p, .contact-card a {
             font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
-            transition: color 0.3s;
+            line-height: 1.6;
         }
 
-        .contact-item a:hover {
-            color: var(--bg-primary);
+        .contact-card a:hover {
+            color: var(--accent-light);
         }
 
         /* Footer */
         footer {
-            background: #111;
+            background: var(--bg-darker);
             color: rgba(255, 255, 255, 0.5);
             text-align: center;
             padding: 2rem;
@@ -526,11 +758,22 @@
             text-decoration: none;
         }
 
+        footer a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
         /* Mobile Menu */
         .mobile-toggle {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
             background: none;
             border: none;
@@ -538,14 +781,13 @@
         }
 
         .mobile-toggle span {
-            width: 25px;
+            width: 22px;
             height: 2px;
             background: var(--text-primary);
-            transition: all 0.3s ease;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .mobile-toggle {
                 display: flex;
             }
@@ -555,10 +797,10 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--bg-primary);
+                background: white;
                 flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
+                padding: 1rem;
+                gap: 0;
                 border-bottom: 1px solid var(--border);
                 display: none;
             }
@@ -567,17 +809,60 @@
                 display: flex;
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .nav-links a {
+                padding: 0.75rem 1rem;
             }
 
-            .hero h1 {
-                font-size: 2.2rem;
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-meta {
+                align-items: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .teaching-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
             }
 
             section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -586,7 +871,13 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="nav-logo">TASiLab</a>
+            <a href="#" class="nav-logo">
+                <img src="tasilab-logo.png" alt="TASiLab">
+                <div class="nav-logo-text">
+                    <span class="name">TASiLab</span>
+                    <span class="tagline">Statistical Innovation</span>
+                </div>
+            </a>
             <button class="mobile-toggle" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -596,7 +887,9 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#awards">Awards</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -604,18 +897,41 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">Research Excellence</span>
-            <h1>Theoretical &amp; Applied<br><em>Statistical Innovation</em> Lab</h1>
-            <p class="hero-subtitle">TASiLab @ Azizur Rahman</p>
-            <p class="hero-description">
-                Advancing the frontiers of statistical methodology through innovative research 
-                in biostatistics, functional data analysis, and machine learning applications.
-            </p>
-            <div class="hero-affiliation">
-                <span></span>
-                Department of Statistics &amp; Data Science, Jahangirnagar University
-                <span></span>
+        <!-- Floating statistical formulas -->
+        <span class="formula formula-1">f(x) = (1/σ√2π) e^(-(x-μ)²/2σ²)</span>
+        <span class="formula formula-2">β̂ = (X'X)⁻¹X'y</span>
+        <span class="formula formula-3">P(A|B) = P(B|A)P(A) / P(B)</span>
+        <span class="formula formula-4">λ(t) = lim[P(t≤T<t+Δt|T≥t)/Δt]</span>
+        <span class="formula formula-5">Σᵢ₌₁ⁿ (xᵢ - x̄)²</span>
+
+        <div class="hero-container">
+            <div class="hero-logo-section">
+                <img src="tasilab-logo.png" alt="TASiLab Logo" class="hero-logo">
+                <p class="hero-lab-name">THEORETICAL & APPLIED<br>STATISTICAL INNOVATION LAB</p>
+            </div>
+            <div class="hero-content">
+                <h1>Welcome to <span>TASiLab</span></h1>
+                <p class="hero-intro">
+                    I'm <strong>Azizur Rahman</strong>, a PhD Candidate in Biostatistics at the University of Manitoba. 
+                    My research focuses on developing fast approximate inference methods for discrete and continuous 
+                    time models in intensive longitudinal data, with applications in public health and clinical research.
+                </p>
+                <div class="hero-meta">
+                    <span>📍 Department of Community Health Sciences, University of Manitoba</span>
+                    <span>💼 Program Evaluator, Social Innovation Office, Government of Manitoba</span>
+                    <span>🎓 Associate Professor (on study leave), Jahangirnagar University</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="Azizur_Rahman_CV.pdf" download class="btn btn-primary">
+                        ↓ Download CV
+                    </a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" class="btn btn-outline">
+                        Google Scholar
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        Contact
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -625,52 +941,60 @@
         <div class="container">
             <div class="section-header">
                 <h2>About the Lab</h2>
-                <p>Bridging theoretical foundations with real-world statistical applications</p>
+                <p>Advancing statistical methodology for public health applications</p>
             </div>
             <div class="about-grid">
-                <div class="about-content">
-                    <h3>Our Mission</h3>
+                <div class="about-text">
+                    <h3>Research Focus</h3>
                     <p>
-                        TASiLab (Theoretical and Applied Statistical Innovation Lab) is dedicated to 
-                        advancing statistical science through rigorous theoretical development and 
-                        innovative applications. We focus on creating novel methodologies that address 
-                        complex challenges in public health, biostatistics, and data science.
+                        TASiLab (Theoretical and Applied Statistical Innovation Lab) develops novel statistical 
+                        methodologies with applications in biostatistics, public health, and data science. Our 
+                        primary focus is on fast approximate inference using variational Bayes methods for 
+                        intensive longitudinal data analysis.
                     </p>
                     <p>
-                        Our interdisciplinary approach combines traditional statistical theory with 
-                        modern computational techniques, including machine learning and functional 
-                        data analysis, to solve pressing problems in healthcare, epidemiology, 
-                        and social sciences.
+                        We combine rigorous theoretical development with practical applications, working on 
+                        problems ranging from functional data analysis for mortality forecasting to machine 
+                        learning methods for health outcome prediction.
                     </p>
-                    <h3>Research Philosophy</h3>
+
+                    <h3>Education</h3>
                     <p>
-                        We believe in the power of data-driven insights to transform decision-making. 
-                        Our research emphasizes reproducibility, methodological rigor, and practical 
-                        applicability to real-world problems.
+                        <strong>PhD Candidate</strong> — Community Health Sciences, University of Manitoba (2019–Present)<br>
+                        <em>Thesis: Fast Approximate Inference for Discrete and Continuous Time Models in Intensive Longitudinal Data</em><br>
+                        <em>Supervisor: Dr. Depeng Jiang</em>
+                    </p>
+                    <p>
+                        <strong>M.Phil in Statistics</strong> — Jahangirnagar University, Bangladesh (2017)<br>
+                        <strong>MSc in Statistics</strong> — Jahangirnagar University, 1st Position, CGPA 3.80/4.00 (2008)<br>
+                        <strong>BSc in Statistics</strong> — Jahangirnagar University, 1st Position, CGPA 3.72/4.00 (2007)
                     </p>
                 </div>
-                <div class="director-card">
-                    <div class="label">Lab Director</div>
-                    <h4>Azizur Rahman</h4>
-                    <span class="former">Former Associate Professor, Jahangirnagar University</span>
-                    <div class="title">
-                        Senior Data Scientist<br>
-                        Social Innovation Office<br>
-                        Department of Families, Government of Manitoba
+                <div class="info-card">
+                    <h4>Quick Info</h4>
+                    <div class="info-item">
+                        <div class="label">Email</div>
+                        <div class="value"><a href="mailto:rahmana1@myumanitoba.ca">rahmana1@myumanitoba.ca</a></div>
                     </div>
-                    <p class="bio">
-                        Azizur Rahman is an applied statistician with expertise in functional data analysis, 
-                        time series forecasting, and biostatistical modeling. His research focuses on 
-                        developing novel statistical methodologies for public health applications, 
-                        including mortality forecasting and disease modeling.
-                    </p>
-                    <div class="director-links">
-                        <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank">
-                            Google Scholar →
-                        </a>
-                        <a href="mailto:Azizur.Rahman@gov.mb.ca">
-                            Email →
-                        </a>
+                    <div class="info-item">
+                        <div class="label">Phone</div>
+                        <div class="value">204-290-7542</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Location</div>
+                        <div class="value">Winnipeg, Manitoba, Canada</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Affiliation</div>
+                        <div class="value">University of Manitoba<br>Jahangirnagar University</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Languages</div>
+                        <div class="value">R, Python, SAS, LaTeX</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">Editorial Role</div>
+                        <div class="value">Statistics Editor, Bangladesh Journal of Infectious Diseases</div>
                     </div>
                 </div>
             </div>
@@ -682,61 +1006,68 @@
         <div class="container">
             <div class="section-header">
                 <h2>Research Areas</h2>
-                <p>Exploring cutting-edge statistical methodologies across multiple domains</p>
+                <p>Developing statistical methods at the intersection of theory and application</p>
             </div>
             <div class="research-grid">
                 <div class="research-card">
-                    <div class="number">01</div>
+                    <div class="number">// 01</div>
+                    <h3>Intensive Longitudinal Data</h3>
+                    <p>Fast approximate inference for discrete and continuous time models using variational Bayes methods for high-frequency health data.</p>
+                    <div class="tags">
+                        <span class="tag">Variational Bayes</span>
+                        <span class="tag">TAR Models</span>
+                        <span class="tag">MCMC</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="number">// 02</div>
                     <h3>Functional Data Analysis</h3>
-                    <p>
-                        Developing methods for analyzing curves, surfaces, and other 
-                        infinite-dimensional data objects with applications in mortality 
-                        forecasting and climate pattern analysis.
-                    </p>
+                    <p>Application of FDA methods for mortality forecasting, influenza patterns, and environmental time series analysis.</p>
+                    <div class="tags">
+                        <span class="tag">FDA</span>
+                        <span class="tag">fPCA</span>
+                        <span class="tag">Forecasting</span>
+                    </div>
                 </div>
                 <div class="research-card">
-                    <div class="number">02</div>
-                    <h3>Biostatistics &amp; Public Health</h3>
-                    <p>
-                        Applying statistical methods to understand health outcomes, 
-                        disease patterns, and healthcare interventions in developing 
-                        countries with focus on maternal and child health.
-                    </p>
-                </div>
-                <div class="research-card">
-                    <div class="number">03</div>
+                    <div class="number">// 03</div>
                     <h3>Machine Learning in Healthcare</h3>
-                    <p>
-                        Integrating modern ML algorithms with traditional statistical 
-                        approaches for predictive modeling, including infant mortality 
-                        prediction and disease classification.
-                    </p>
+                    <p>Predictive modeling for infant mortality, disease classification, and interpretable ML methods for clinical applications.</p>
+                    <div class="tags">
+                        <span class="tag">SVM</span>
+                        <span class="tag">Random Forest</span>
+                        <span class="tag">XAI</span>
+                    </div>
                 </div>
                 <div class="research-card">
-                    <div class="number">04</div>
-                    <h3>Time Series &amp; Forecasting</h3>
-                    <p>
-                        Advanced forecasting methods including ARIMA, neural networks, 
-                        and hybrid approaches for epidemiological and demographic 
-                        time series data.
-                    </p>
-                </div>
-                <div class="research-card">
-                    <div class="number">05</div>
+                    <div class="number">// 04</div>
                     <h3>Bayesian Modeling</h3>
-                    <p>
-                        Bayesian statistical approaches for complex hierarchical models, 
-                        spatial analysis, and uncertainty quantification in health 
-                        and social science research.
-                    </p>
+                    <p>Bayesian logistic regression, change point analysis, and hierarchical models for public health research.</p>
+                    <div class="tags">
+                        <span class="tag">Bayesian</span>
+                        <span class="tag">INLA</span>
+                        <span class="tag">Hierarchical</span>
+                    </div>
                 </div>
                 <div class="research-card">
-                    <div class="number">06</div>
+                    <div class="number">// 05</div>
                     <h3>Multi-state Markov Models</h3>
-                    <p>
-                        Modeling disease progression and state transitions with 
-                        applications in chronic disease research and survival analysis.
-                    </p>
+                    <p>Modeling disease progression and state transitions for chronic disease research and air pollution dynamics.</p>
+                    <div class="tags">
+                        <span class="tag">Markov</span>
+                        <span class="tag">Survival</span>
+                        <span class="tag">Transition</span>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="number">// 06</div>
+                    <h3>Public Health Epidemiology</h3>
+                    <p>Analysis of maternal and child health, nutritional status, and health determinants in developing countries.</p>
+                    <div class="tags">
+                        <span class="tag">Epidemiology</span>
+                        <span class="tag">MCH</span>
+                        <span class="tag">BDHS</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -747,73 +1078,280 @@
         <div class="container">
             <div class="section-header">
                 <h2>Selected Publications</h2>
-                <p>Recent contributions to statistical literature and applied research</p>
+                <p>25+ peer-reviewed articles in statistical methodology and public health</p>
             </div>
-            <div class="publications-list">
-                <div class="publication-item">
-                    <div class="year">2024</div>
-                    <h4>On the interpretability of the SVM model for predicting infant mortality in Bangladesh</h4>
-                    <div class="authors">Sayeed, M.A., Rahman, A., Rahman, A. &amp; Rois, R.</div>
-                    <div class="journal">Journal of Health, Population and Nutrition, 43, 170</div>
+            <div class="pub-list">
+                <div class="pub-item">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4>Fast and accurate variational Bayes inference for Multilevel Threshold Autoregressive Model for Intensive Longitudinal Data</h4>
+                        <div class="authors"><strong>Rahman, A.</strong>, Jiang, D., & Lix, L.M.</div>
+                        <div class="journal">British Journal of Mathematical and Statistical Psychology, Wiley</div>
+                    </div>
                 </div>
-                <div class="publication-item">
-                    <div class="year">2023</div>
-                    <h4>Forecasting Canadian Age-Specific Mortality Rate: Application of Functional Time Series Analysis</h4>
-                    <div class="authors">Rahman, A. &amp; Jiang, D.</div>
-                    <div class="journal">Mathematics, 11, 3808</div>
+                <div class="pub-item">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4>Exploring regional air pollution transition dynamics: A multi-state Markov model approach</h4>
+                        <div class="authors">Hossain, M., Sarkar, S., Methun, I.H., & <strong>Rahman, A.</strong></div>
+                        <div class="journal">PLoS One, 20(10), e0333849</div>
+                    </div>
                 </div>
-                <div class="publication-item">
-                    <div class="year">2021</div>
-                    <h4>Regional and temporal patterns of influenza: Application of functional data analysis</h4>
-                    <div class="authors">Rahman, A. &amp; Jiang, D.</div>
-                    <div class="journal">Infectious Disease Modelling, 6, 1061-1072</div>
+                <div class="pub-item">
+                    <div class="pub-year">2025</div>
+                    <div class="pub-content">
+                        <h4>A functional mixed-effects model approach to explore regional climate patterns in Bangladesh</h4>
+                        <div class="authors">Munni, M., <strong>Rahman, A.</strong>, Khan, M.M., & Rois, R.</div>
+                        <div class="journal">Discover Atmosphere, 3(3)</div>
+                    </div>
                 </div>
-                <div class="publication-item">
-                    <div class="year">2021</div>
-                    <h4>Machine Learning Algorithm for Analysing Infant Mortality in Bangladesh</h4>
-                    <div class="authors">Rahman, A., Hossain, Z., Kabir, E. &amp; Rois, R.</div>
-                    <div class="journal">HIS 2021, Lecture Notes in Computer Science, 13079</div>
+                <div class="pub-item">
+                    <div class="pub-year">2024</div>
+                    <div class="pub-content">
+                        <h4>On the interpretability of SVM model for predicting infant mortality in Bangladesh</h4>
+                        <div class="authors">Sayeed, A., <strong>Rahman, A.</strong>, & Rois, R.</div>
+                        <div class="journal">Journal of Health, Population and Nutrition, 44(170)</div>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h4>Forecasting Canadian Age-Specific Mortality Rate: Application of Functional Time Series Analysis</h4>
+                        <div class="authors"><strong>Rahman, A.</strong> & Jiang, D.</div>
+                        <div class="journal">Mathematics, 11, 3808</div>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-content">
+                        <h4>Forecasting Hourly Ozone Concentration using Functional Time Series Model</h4>
+                        <div class="authors"><strong>Rahman, A.</strong> & Nasher, N.M.R.</div>
+                        <div class="journal">Journal of Environmental Modeling and Assessment, Springer</div>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-year">2021</div>
+                    <div class="pub-content">
+                        <h4>Regional and Temporal Pattern of Influenza: Application of Functional Data Analysis</h4>
+                        <div class="authors"><strong>Rahman, A.</strong> & Jiang, D.</div>
+                        <div class="journal">Infectious Disease Modeling, 6, 1061-1070</div>
+                    </div>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
-                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" style="color: var(--accent); text-decoration: none;">
+            <div class="view-all">
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank">
                     View all publications on Google Scholar →
                 </a>
-            </p>
+            </div>
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section id="team">
+    <!-- Teaching Section -->
+    <section id="teaching">
         <div class="container">
             <div class="section-header">
-                <h2>Our Team</h2>
-                <p>Researchers and collaborators advancing statistical innovation</p>
+                <h2>Teaching</h2>
+                <p>Academic positions and thesis supervision</p>
             </div>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">AR</div>
-                    <h4>Azizur Rahman</h4>
-                    <div class="role">Lab Director</div>
-                    <div class="affiliation">Senior Data Scientist, Gov. of Manitoba</div>
+            <div class="teaching-grid">
+                <div class="teaching-category">
+                    <h3>Academic Positions</h3>
+                    <div class="teaching-item">
+                        <div class="period">2020 – Present (on study leave)</div>
+                        <div class="title">Associate Professor</div>
+                        <div class="institution">Department of Statistics, Jahangirnagar University, Bangladesh</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">2017 – 2020</div>
+                        <div class="title">Assistant Professor</div>
+                        <div class="institution">Department of Statistics, Jahangirnagar University, Bangladesh</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">2014 – 2017</div>
+                        <div class="title">Lecturer</div>
+                        <div class="institution">Department of Statistics, Jahangirnagar University, Bangladesh</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">Jan 2019 – Apr 2019</div>
+                        <div class="title">Lab Teaching Assistant (Stat 1000/2000)</div>
+                        <div class="institution">Department of Statistics, University of Manitoba</div>
+                    </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">FH</div>
-                    <h4>Faruk Hasan</h4>
-                    <div class="role">Research Assistant</div>
-                    <div class="affiliation">Data Scientist, City Bank PLC</div>
+                <div class="teaching-category">
+                    <h3>Thesis Supervision</h3>
+                    <div class="teaching-item">
+                        <div class="period">2023</div>
+                        <div class="title">Munniara Yesmin Munni (MSc)</div>
+                        <div class="institution">Temporal and Regional Variations of Effects of Daily Temperature on Annual Precipitation: A Functional Mixed Effect Model Approach</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">2022</div>
+                        <div class="title">Jay Panchal (MITACS Summer Student)</div>
+                        <div class="institution">Application of functional data analysis to observation of COVID-19 prevalence in the USA (Co-supervisor)</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">2017</div>
+                        <div class="title">Piash Paul (MSc)</div>
+                        <div class="institution">Application of Akaike Information Criterion (AIC) in Outlier Detection</div>
+                    </div>
+                    <div class="teaching-item">
+                        <div class="period">2017</div>
+                        <div class="title">Arifa Tabassum Anika (BSc)</div>
+                        <div class="institution">Modeling Generalized Zero-Inflated Poisson Distribution for Torrential Rainfall</div>
+                    </div>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">RA</div>
-                    <h4>[Research Assistant]</h4>
-                    <div class="role">Graduate Researcher</div>
-                    <div class="affiliation">Jahangirnagar University</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>Research and government positions</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="period">January 2023 – Present</div>
+                    <h4>Program Evaluator (Mixed Method, SS3)</h4>
+                    <div class="org">Social Innovation Office, Department of Families, Government of Manitoba</div>
+                    <p>Performing data cleaning and linkages. Conducting multivariate statistical analyses and visualizations. Developing predictive models to identify risk factors. Creating demand and supply distribution mapping for MECL project using R.</p>
                 </div>
-                <div class="team-card">
-                    <div class="team-avatar">MS</div>
-                    <h4>[MS Student]</h4>
-                    <div class="role">Research Student</div>
-                    <div class="affiliation">Jahangirnagar University</div>
+                <div class="timeline-item">
+                    <div class="period">January 2021 – March 2022</div>
+                    <h4>Quantitative Data Analyst</h4>
+                    <div class="org">MHA Evaluation Program, Government of Manitoba</div>
+                    <p>Analysis and evaluation of Mental Health and Addictions programs. Statistical modeling and reporting under supervision of Dr. Brian Rush, VIRGO Planning and Evaluation Consultants Inc.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">June 2020 – October 2020</div>
+                    <h4>Step Student (Research Analyst)</h4>
+                    <div class="org">MHA Evaluation, Healthy Child Manitoba Office (SIO)</div>
+                    <p>Research analysis under supervision of Dr. Monica Novotny.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">May 2019 – August 2019</div>
+                    <h4>Research Assistant</h4>
+                    <div class="org">Department of Community Health Sciences, University of Manitoba</div>
+                    <p>Working with Dr. Depeng Jiang on statistical methodology research.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="period">May 2017 – August 2017</div>
+                    <h4>Consultant (Statistician)</h4>
+                    <div class="org">Bangabandhu Sheikh Mujib Medical University</div>
+                    <p>Prevalence and determinants of child abuse and neglect among working children. Developing sampling design and statistical models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards">
+        <div class="container">
+            <div class="section-header">
+                <h2>Honors & Awards</h2>
+                <p>Recognition for research excellence</p>
+            </div>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-content">
+                        <div class="year">2023</div>
+                        <h4>First Prize - Poster Presentation (PhD Category)</h4>
+                        <p>CSSC Conference, Carleton University, Ottawa</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🏅</div>
+                    <div class="award-content">
+                        <div class="year">2022</div>
+                        <h4>SSC Award Winner</h4>
+                        <p>Case Studies in Data Analysis Competition, Statistical Society of Canada</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🎯</div>
+                    <div class="award-content">
+                        <div class="year">2021</div>
+                        <h4>VADA Big Data Challenge Winner</h4>
+                        <p>Visual and Automated Disease Analytics Summer School</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🎯</div>
+                    <div class="award-content">
+                        <div class="year">2021</div>
+                        <h4>AI4PH Big Data Challenge Winner</h4>
+                        <p>Artificial Intelligence for Public Health Summer Institute</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">🎓</div>
+                    <div class="award-content">
+                        <div class="year">2019–2021</div>
+                        <h4>VADA Graduate Training Scholarship</h4>
+                        <p>NSERC, University of Manitoba & University of Victoria</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-icon">📚</div>
+                    <div class="award-content">
+                        <div class="year">2003–2007</div>
+                        <h4>University Grant Academic Merit Scholarship</h4>
+                        <p>Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">R / RStudio</div>
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">SAS</div>
+                        <div class="skill-item">LaTeX</div>
+                        <div class="skill-item">MATLAB</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Statistical Methods</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">Variational Bayes</div>
+                        <div class="skill-item">Functional Data Analysis</div>
+                        <div class="skill-item">Bayesian Inference</div>
+                        <div class="skill-item">Survival Analysis</div>
+                        <div class="skill-item">Mixed Effects Models</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Machine Learning</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">Random Forest</div>
+                        <div class="skill-item">SVM</div>
+                        <div class="skill-item">Neural Networks</div>
+                        <div class="skill-item">Clustering</div>
+                        <div class="skill-item">Classification</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Domains</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">Biostatistics</div>
+                        <div class="skill-item">Public Health</div>
+                        <div class="skill-item">Epidemiology</div>
+                        <div class="skill-item">Clinical Trials</div>
+                        <div class="skill-item">Health Informatics</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -823,44 +1361,42 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Get in Touch</h2>
-                <p>Interested in collaboration or joining our team?</p>
+                <h2>Contact</h2>
+                <p>Open to research collaborations and opportunities</p>
             </div>
             <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="icon">📍</div>
-                    <h4>Affiliated Institution</h4>
-                    <p>
-                        Department of Statistics &amp; Data Science<br>
-                        Jahangirnagar University<br>
-                        Savar, Dhaka-1342, Bangladesh
-                    </p>
-                </div>
-                <div class="contact-item">
-                    <div class="icon">✉️</div>
+                <div class="contact-card">
                     <h4>Email</h4>
-                    <p>
-                        <a href="mailto:Azizur.Rahman@gov.mb.ca">Azizur.Rahman@gov.mb.ca</a>
-                    </p>
+                    <p><a href="mailto:rahmana1@myumanitoba.ca">rahmana1@myumanitoba.ca</a></p>
                 </div>
-                <div class="contact-item">
-                    <div class="icon">🔬</div>
-                    <h4>Research Collaboration</h4>
-                    <p>
-                        Open to collaborations in<br>
-                        biostatistics &amp; public health research
-                    </p>
+                <div class="contact-card">
+                    <h4>Phone</h4>
+                    <p>204-290-7542</p>
                 </div>
+                <div class="contact-card">
+                    <h4>Location</h4>
+                    <p>Department of Community Health Sciences<br>University of Manitoba<br>Winnipeg, MB, Canada</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="Azizur_Rahman_CV.pdf" download class="btn btn-primary" style="margin-right: 1rem;">
+                    ↓ Download Full CV
+                </a>
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" class="btn btn-outline">
+                    Google Scholar Profile
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>
-            &copy; 2024 TASiLab — Theoretical and Applied Statistical Innovation Lab<br>
-            <a href="https://juniv.edu" target="_blank">Affiliated with Jahangirnagar University</a>
-        </p>
+        <div class="footer-links">
+            <a href="https://umanitoba.ca" target="_blank">University of Manitoba</a>
+            <a href="https://juniv.edu" target="_blank">Jahangirnagar University</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank">Google Scholar</a>
+        </div>
+        <p>© 2024 TASiLab — Theoretical and Applied Statistical Innovation Lab<br>Azizur Rahman</p>
     </footer>
 
     <script>
@@ -882,7 +1418,7 @@
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             } else {
                 nav.style.boxShadow = 'none';
             }
