@@ -43,6 +43,10 @@
             font-size: 15px;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -127,7 +131,6 @@
             overflow: hidden;
         }
 
-        /* Statistical background pattern */
         .hero::before {
             content: '';
             position: absolute;
@@ -142,7 +145,6 @@
             pointer-events: none;
         }
 
-        /* Floating formulas */
         .formula {
             position: absolute;
             font-family: var(--mono);
@@ -161,7 +163,7 @@
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
             align-items: center;
             position: relative;
@@ -173,17 +175,17 @@
         }
 
         .hero-logo {
-            width: 200px;
-            height: 200px;
+            width: 280px;
+            height: 280px;
             margin-bottom: 1.5rem;
             filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
         }
 
         .hero-lab-name {
             font-family: var(--serif);
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            letter-spacing: 0.1em;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: 0.08em;
         }
 
         .hero-content {
@@ -262,6 +264,26 @@
         .btn-outline:hover {
             border-color: var(--accent-light);
             background: rgba(255,255,255,0.05);
+        }
+
+        .btn-dark {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: var(--accent-dark);
+        }
+
+        .btn-outline-dark {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-outline-dark:hover {
+            background: var(--accent);
+            color: white;
         }
 
         /* Section Styles */
@@ -369,6 +391,10 @@
         .info-item .value a {
             color: var(--accent);
             text-decoration: none;
+        }
+
+        .info-item .value a:hover {
+            text-decoration: underline;
         }
 
         /* Research Section */
@@ -715,6 +741,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .contact-card {
@@ -733,15 +760,48 @@
             margin-bottom: 1rem;
         }
 
-        .contact-card p, .contact-card a {
+        .contact-card p {
             font-size: 0.95rem;
             color: rgba(255,255,255,0.85);
-            text-decoration: none;
             line-height: 1.6;
+        }
+        
+        .contact-card a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
         }
 
         .contact-card a:hover {
             color: var(--accent-light);
+        }
+
+        .contact-buttons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--accent);
+        }
+
+        .btn-light:hover {
+            background: var(--accent-light);
+            color: white;
+        }
+
+        .btn-outline-light {
+            border: 1px solid rgba(255,255,255,0.5);
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
         }
 
         /* Footer */
@@ -818,6 +878,11 @@
                 text-align: center;
             }
 
+            .hero-logo {
+                width: 200px;
+                height: 200px;
+            }
+
             .hero-meta {
                 align-items: center;
             }
@@ -863,6 +928,11 @@
         @media (max-width: 500px) {
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -922,14 +992,14 @@
                     <span>🎓 Associate Professor (on study leave), Jahangirnagar University</span>
                 </div>
                 <div class="hero-buttons">
-                    <a href="Azizur_Rahman_CV.pdf" download class="btn btn-primary">
+                    <a href="Azizur_Rahman_CV.pdf" download="Azizur_Rahman_CV.pdf" class="btn btn-primary">
                         ↓ Download CV
                     </a>
-                    <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" class="btn btn-outline">
+                    <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                         Google Scholar
                     </a>
-                    <a href="#contact" class="btn btn-outline">
-                        Contact
+                    <a href="mailto:rahmana1@myumanitoba.ca" class="btn btn-outline">
+                        Contact Me
                     </a>
                 </div>
             </div>
@@ -940,8 +1010,8 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <h2>About the Lab</h2>
-                <p>Advancing statistical methodology for public health applications</p>
+                <h2>About</h2>
+                <p>Background and education</p>
             </div>
             <div class="about-grid">
                 <div class="about-text">
@@ -1139,7 +1209,7 @@
                 </div>
             </div>
             <div class="view-all">
-                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank">
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer">
                     View all publications on Google Scholar →
                 </a>
             </div>
@@ -1378,12 +1448,15 @@
                     <p>Department of Community Health Sciences<br>University of Manitoba<br>Winnipeg, MB, Canada</p>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="Azizur_Rahman_CV.pdf" download class="btn btn-primary" style="margin-right: 1rem;">
+            <div class="contact-buttons">
+                <a href="Azizur_Rahman_CV.pdf" download="Azizur_Rahman_CV.pdf" class="btn btn-light">
                     ↓ Download Full CV
                 </a>
-                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" class="btn btn-outline">
+                <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
                     Google Scholar Profile
+                </a>
+                <a href="mailto:rahmana1@myumanitoba.ca" class="btn btn-outline-light">
+                    Send Email
                 </a>
             </div>
         </div>
@@ -1392,11 +1465,11 @@
     <!-- Footer -->
     <footer>
         <div class="footer-links">
-            <a href="https://umanitoba.ca" target="_blank">University of Manitoba</a>
-            <a href="https://juniv.edu" target="_blank">Jahangirnagar University</a>
-            <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank">Google Scholar</a>
+            <a href="https://umanitoba.ca" target="_blank" rel="noopener noreferrer">University of Manitoba</a>
+            <a href="https://juniv.edu" target="_blank" rel="noopener noreferrer">Jahangirnagar University</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=VxYeDjYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
         </div>
-        <p>© 2024 TASiLab — Theoretical and Applied Statistical Innovation Lab<br>Azizur Rahman</p>
+        <p>© 2024 TASiLab — Theoretical and Applied Statistical Innovation Lab | Azizur Rahman</p>
     </footer>
 
     <script>
