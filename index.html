@@ -6,80 +6,106 @@
     <title>TASiLab | Theoretical and Applied Statistical Innovation Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
-        :root{--bg-primary:#fafafa;--bg-secondary:#f5f5f5;--bg-dark:#1a1a2e;--bg-darker:#16162a;--text-primary:#1a1a1a;--text-secondary:#555;--text-light:#777;--accent:#00796B;--accent-light:#4DB6AC;--accent-dark:#004D40;--border:#e0e0e0;--code-bg:#f8f8f8;--serif:'Crimson Pro',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace}
+        :root{--bg-primary:#fafafa;--bg-secondary:#f5f5f5;--bg-dark:#0f0f1a;--bg-darker:#0a0a12;--text-primary:#1a1a1a;--text-secondary:#555;--text-light:#777;--accent:#00897B;--accent-light:#4DB6AC;--accent-dark:#00695C;--border:#e0e0e0;--serif:'Crimson Pro',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--mono:'JetBrains Mono',monospace}
         *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg-primary);color:var(--text-primary);line-height:1.7;font-size:15px}a{text-decoration:none}
-        nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.98);border-bottom:1px solid var(--border);z-index:1000}
+        nav{position:fixed;top:0;width:100%;background:rgba(15,15,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);z-index:1000}
         .nav-container{max-width:1200px;margin:0 auto;padding:0.75rem 2rem;display:flex;justify-content:space-between;align-items:center}
         .nav-logo{display:flex;align-items:center;gap:0.75rem;flex-shrink:0}
-        .nav-logo img{height:36px;width:36px}
+        .nav-logo img{height:38px;width:38px}
         .nav-logo-text{display:flex;flex-direction:column}
-        .nav-logo-text .name{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--accent);line-height:1.2}
-        .nav-logo-text .tagline{font-size:0.6rem;color:var(--text-light);letter-spacing:0.03em}
+        .nav-logo-text .name{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:white;line-height:1.2}
+        .nav-logo-text .tagline{font-size:0.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.03em}
         .nav-links{display:flex;gap:0.25rem;list-style:none}
-        .nav-links a{color:var(--text-secondary);font-size:0.8rem;font-weight:500;padding:0.5rem 0.75rem;border-radius:4px;transition:all 0.2s}
-        .nav-links a:hover{color:var(--accent);background:rgba(0,121,107,0.08)}
-        .hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--bg-dark),var(--bg-darker));padding:7rem 2rem 4rem}
-        .hero-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:center}
-        .hero-left{text-align:center}
-        .hero-logo{width:200px;height:200px;margin:0 auto 1.5rem;display:block}
-        .hero-lab-name{font-family:var(--serif);font-size:0.8rem;color:rgba(255,255,255,0.6);letter-spacing:0.08em;line-height:1.6}
-        .hero-right{color:white}
-        .hero-right h1{font-family:var(--serif);font-size:2.5rem;font-weight:400;margin-bottom:1.25rem;line-height:1.2}
-        .hero-right h1 span{color:var(--accent-light)}
-        .hero-intro{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:1.25rem;line-height:1.8}
-        .hero-meta{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.75rem;font-size:0.85rem;color:rgba(255,255,255,0.65)}
+        .nav-links a{color:rgba(255,255,255,0.7);font-size:0.8rem;font-weight:500;padding:0.5rem 0.75rem;border-radius:6px;transition:all 0.2s}
+        .nav-links a:hover{color:white;background:rgba(255,255,255,0.1)}
+        .hero{min-height:100vh;display:flex;align-items:center;background:var(--bg-dark);padding:7rem 2rem 4rem;position:relative;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;overflow:hidden}
+        .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:0.15}
+        .glow-1{top:-200px;right:-100px;background:var(--accent)}
+        .glow-2{bottom:-300px;left:-200px;background:var(--accent-light)}
+        .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px}
+        .hero-container{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+        .hero-left{color:white}
+        .hero-eyebrow{font-family:var(--mono);font-size:0.75rem;color:var(--accent-light);letter-spacing:0.1em;margin-bottom:1rem;text-transform:uppercase}
+        .hero-left h1{font-family:var(--serif);font-size:3rem;font-weight:400;margin-bottom:1.5rem;line-height:1.1}
+        .hero-left h1 span{background:linear-gradient(135deg,var(--accent-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero-intro{font-size:1.05rem;color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.85}
+        .hero-meta{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;font-size:0.85rem;color:rgba(255,255,255,0.5)}
+        .hero-meta span{display:flex;align-items:center;gap:0.5rem}
+        .hero-meta span::before{content:'';width:4px;height:4px;background:var(--accent);border-radius:50%}
         .hero-buttons{display:flex;gap:0.75rem;flex-wrap:wrap}
-        .btn{display:inline-block;padding:0.7rem 1.4rem;border-radius:4px;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.2s;border:none}
-        .btn-primary{background:var(--accent);color:white}.btn-primary:hover{background:var(--accent-dark)}
-        .btn-outline{border:1px solid rgba(255,255,255,0.35);color:white;background:transparent}.btn-outline:hover{border-color:var(--accent-light);background:rgba(255,255,255,0.08)}
+        .btn{display:inline-block;padding:0.8rem 1.6rem;border-radius:8px;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.3s;border:none}
+        .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;box-shadow:0 4px 20px rgba(0,137,123,0.3)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(0,137,123,0.4)}
+        .btn-outline{border:1px solid rgba(255,255,255,0.2);color:white;background:rgba(255,255,255,0.03)}.btn-outline:hover{border-color:var(--accent-light);background:rgba(255,255,255,0.08)}
+        .hero-right{display:flex;justify-content:center;align-items:center}
+        .hero-visual{position:relative;width:400px;height:480px;display:flex;align-items:center;justify-content:center}
+        .hero-logo-main{width:180px;height:180px;position:relative;z-index:3}
+        .hero-logo-main img{width:100%;height:100%;filter:drop-shadow(0 20px 60px rgba(0,137,123,0.3))}
+        .hero-orbit{position:absolute;border-radius:50%;border:1px dashed rgba(255,255,255,0.08)}
+        .orbit-1{width:280px;height:280px;animation:spin 40s linear infinite}
+        .orbit-2{width:380px;height:380px;animation:spin 60s linear infinite reverse}
+        @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .hero-photo-float{position:absolute;width:140px;height:140px;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);border:2px solid rgba(255,255,255,0.1);z-index:2;top:20px;right:20px}
+        .hero-photo-float img{width:100%;height:100%;object-fit:cover}
+        .hero-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:rgba(255,255,255,0.6);font-size:0.65rem;text-align:center;padding:0.75rem}
+        .hero-name-tag{position:absolute;bottom:60px;left:0;background:rgba(255,255,255,0.95);border-radius:12px;padding:0.9rem 1.2rem;box-shadow:0 10px 40px rgba(0,0,0,0.2);z-index:4}
+        .hero-name-tag h3{font-family:var(--serif);font-size:1.05rem;color:var(--text-primary);margin-bottom:0.1rem}
+        .hero-name-tag p{font-size:0.7rem;color:var(--text-secondary)}
+        .hero-accent-dot{position:absolute;width:10px;height:10px;background:var(--accent-light);border-radius:50%;z-index:1}
+        .dot-1{top:80px;left:40px;animation:pulse 3s ease-in-out infinite}
+        .dot-2{bottom:100px;right:60px;animation:pulse 3s ease-in-out infinite 1s}
+        .dot-3{top:50%;left:10px;animation:pulse 3s ease-in-out infinite 2s}
+        @keyframes pulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
         section{padding:5rem 2rem}.container{max-width:1100px;margin:0 auto}
-        .section-header{margin-bottom:2.5rem}.section-header h2{font-family:var(--serif);font-size:1.75rem;font-weight:600;margin-bottom:0.4rem;color:var(--text-primary)}
+        .section-header{margin-bottom:2.5rem}.section-header h2{font-family:var(--serif);font-size:1.85rem;font-weight:600;margin-bottom:0.4rem;color:var(--text-primary)}
         .section-header p{color:var(--text-secondary);font-size:0.95rem}
         #lab{background:var(--bg-secondary)}.lab-content{display:grid;grid-template-columns:1.6fr 1fr;gap:3rem}
         .lab-text h3{font-family:var(--serif);font-size:1.15rem;color:var(--accent);margin:1.5rem 0 0.75rem}.lab-text h3:first-child{margin-top:0}
         .lab-text p{color:var(--text-secondary);margin-bottom:0.75rem;line-height:1.75}
         .lab-text ul{color:var(--text-secondary);margin-left:1.25rem;margin-bottom:0.75rem}.lab-text li{margin-bottom:0.4rem}
         .lab-highlights{display:flex;flex-direction:column;gap:0.75rem}
-        .highlight-card{background:white;padding:1.25rem;border-radius:6px;border:1px solid var(--border)}
+        .highlight-card{background:white;padding:1.25rem;border-radius:10px;border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s}
+        .highlight-card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.06)}
         .highlight-card h4{font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-light);margin-bottom:0.4rem}
         .highlight-card .number{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--accent)}
         .highlight-card .label{font-size:0.85rem;color:var(--text-secondary)}
         .people-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
         .people-grid.collapsed .person-card:nth-child(n+5){display:none}
-        .person-card{background:white;padding:1.5rem 1.25rem;border-radius:6px;border:1px solid var(--border);text-align:center;transition:box-shadow 0.2s}
-        .person-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-        .person-card.director{border-color:var(--accent)}
-        .person-avatar{width:50px;height:50px;background:var(--accent);border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--serif);font-size:0.95rem;font-weight:600}
+        .person-card{background:white;padding:1.5rem 1.25rem;border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.2s}
+        .person-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+        .person-card.director{border-color:var(--accent);background:linear-gradient(to bottom,rgba(0,137,123,0.03),white)}
+        .person-avatar{width:50px;height:50px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));border-radius:50%;margin:0 auto 0.75rem;display:flex;align-items:center;justify-content:center;color:white;font-family:var(--serif);font-size:0.95rem;font-weight:600}
         .person-card h4{font-family:var(--serif);font-size:0.95rem;margin-bottom:0.15rem}
         .person-card .role{color:var(--accent);font-size:0.75rem;font-weight:500;margin-bottom:0.25rem}
         .person-card .affiliation{color:var(--text-secondary);font-size:0.7rem;line-height:1.4}
         .person-card .links{margin-top:0.6rem}.person-card .links a{font-size:0.7rem;color:var(--accent)}.person-card .links a:hover{text-decoration:underline}
-        .expand-btn{display:block;margin:2rem auto 0;padding:0.6rem 1.5rem;background:none;border:1px solid var(--border);border-radius:4px;font-size:0.85rem;color:var(--text-secondary);cursor:pointer;transition:all 0.2s}
-        .expand-btn:hover{border-color:var(--accent);color:var(--accent)}
+        .expand-btn{display:block;margin:2rem auto 0;padding:0.7rem 1.75rem;background:white;border:1px solid var(--border);border-radius:8px;font-size:0.85rem;color:var(--text-secondary);cursor:pointer;transition:all 0.2s}
+        .expand-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 4px 15px rgba(0,0,0,0.05)}
         #about{background:var(--bg-secondary)}.about-grid{display:grid;grid-template-columns:1.8fr 1fr;gap:3rem}
         .about-text h3{font-family:var(--serif);font-size:1.15rem;color:var(--accent);margin:1.5rem 0 0.75rem}.about-text h3:first-child{margin-top:0}
         .about-text p{color:var(--text-secondary);margin-bottom:0.75rem;line-height:1.75}
-        .info-card{background:white;padding:1.5rem;border-radius:6px;border:1px solid var(--border)}
+        .info-card{background:white;padding:1.5rem;border-radius:10px;border:1px solid var(--border)}
         .info-card h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-light);margin-bottom:1rem}
         .info-item{padding:0.6rem 0;border-bottom:1px solid var(--border)}.info-item:last-child{border-bottom:none}
         .info-item .label{font-size:0.75rem;color:var(--text-light);margin-bottom:0.15rem}
         .info-item .value{font-size:0.9rem}.info-item .value a{color:var(--accent)}.info-item .value a:hover{text-decoration:underline}
         .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-        .research-card{background:white;padding:1.5rem;border-radius:6px;border:1px solid var(--border);transition:border-color 0.2s}
-        .research-card:hover{border-color:var(--accent)}
+        .research-card{background:white;padding:1.5rem;border-radius:10px;border:1px solid var(--border);transition:all 0.2s}
+        .research-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.06)}
         .research-card .number{font-family:var(--mono);font-size:0.7rem;color:var(--text-light);margin-bottom:0.6rem}
         .research-card h3{font-family:var(--serif);font-size:1.05rem;font-weight:600;margin-bottom:0.6rem}
         .research-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
         #publications{background:var(--bg-secondary)}.pub-list{display:flex;flex-direction:column;gap:0.75rem}
-        .pub-item{background:white;padding:1.25rem 1.5rem;border-radius:6px;border:1px solid var(--border);display:grid;grid-template-columns:50px 1fr;gap:1rem}
+        .pub-item{background:white;padding:1.25rem 1.5rem;border-radius:10px;border:1px solid var(--border);display:grid;grid-template-columns:50px 1fr;gap:1rem;transition:all 0.2s}
+        .pub-item:hover{border-color:var(--accent)}
         .pub-year{font-family:var(--mono);font-size:0.8rem;color:var(--accent);font-weight:500}
         .pub-content h4{font-family:var(--serif);font-size:0.95rem;font-weight:600;margin-bottom:0.3rem;line-height:1.4}
         .pub-content .authors{font-size:0.8rem;color:var(--text-secondary)}
         .pub-content .journal{font-size:0.8rem;color:var(--text-light);font-style:italic;margin-top:0.2rem}
         .view-all{text-align:center;margin-top:1.5rem}.view-all a{color:var(--accent);font-size:0.85rem;font-weight:500}.view-all a:hover{text-decoration:underline}
         #software{background:var(--bg-primary)}
-        .software-card{background:white;padding:2rem;border-radius:6px;border:1px solid var(--border);max-width:450px}
-        .software-card .badge{display:inline-block;font-family:var(--mono);font-size:0.65rem;padding:0.2rem 0.5rem;background:var(--bg-secondary);color:var(--text-light);border-radius:3px;margin-bottom:0.75rem}
+        .software-card{background:white;padding:2rem;border-radius:10px;border:1px solid var(--border);max-width:450px}
+        .software-card .badge{display:inline-block;font-family:var(--mono);font-size:0.65rem;padding:0.25rem 0.6rem;background:rgba(0,137,123,0.1);color:var(--accent);border-radius:4px;margin-bottom:0.75rem}
         .software-card h3{font-family:var(--mono);font-size:1.2rem;color:var(--text-primary);margin-bottom:0.3rem}
         .software-card .type{font-size:0.8rem;color:var(--text-light);margin-bottom:0.75rem}
         .software-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
@@ -89,47 +115,50 @@
         .teaching-item .period{font-family:var(--mono);font-size:0.75rem;color:var(--accent);margin-bottom:0.2rem}
         .teaching-item .title{font-weight:500;font-size:0.9rem;margin-bottom:0.15rem}.teaching-item .institution{font-size:0.85rem;color:var(--text-secondary)}
         #experience{background:var(--bg-secondary)}.timeline{position:relative;padding-left:1.5rem}
-        .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border)}
+        .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--border))}
         .timeline-item{position:relative;padding-bottom:1.75rem}.timeline-item:last-child{padding-bottom:0}
-        .timeline-item::before{content:'';position:absolute;left:-1.5rem;top:0.35rem;width:8px;height:8px;background:var(--accent);border-radius:50%;transform:translateX(-3px)}
+        .timeline-item::before{content:'';position:absolute;left:-1.5rem;top:0.35rem;width:10px;height:10px;background:var(--accent);border-radius:50%;transform:translateX(-4px);box-shadow:0 0 0 4px var(--bg-secondary)}
         .timeline-item .period{font-family:var(--mono);font-size:0.75rem;color:var(--accent);margin-bottom:0.35rem}
         .timeline-item h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:0.2rem}
         .timeline-item .org{color:var(--text-secondary);font-size:0.9rem;margin-bottom:0.35rem}
         .timeline-item p{font-size:0.85rem;color:var(--text-light)}
         .awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-        .award-item{background:white;padding:1.25rem;border-radius:6px;border:1px solid var(--border)}
+        .award-item{background:white;padding:1.25rem;border-radius:10px;border:1px solid var(--border);transition:all 0.2s}
+        .award-item:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.06)}
         .award-item .year{font-family:var(--mono);font-size:0.7rem;color:var(--accent);margin-bottom:0.25rem}
         .award-item h4{font-size:0.9rem;margin-bottom:0.2rem}.award-item p{font-size:0.8rem;color:var(--text-secondary)}
         #skills{background:var(--bg-secondary)}.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-        .skill-category{background:white;padding:1.25rem;border-radius:6px;border:1px solid var(--border)}
+        .skill-category{background:white;padding:1.25rem;border-radius:10px;border:1px solid var(--border)}
         .skill-category h4{font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.75rem}
         .skill-item{font-size:0.85rem;color:var(--text-secondary);padding:0.35rem 0;border-bottom:1px dashed var(--border)}.skill-item:last-child{border-bottom:none}
-        #contact{background:var(--bg-dark);color:white}#contact .section-header h2{color:white}
+        #contact{background:var(--bg-dark);color:white;position:relative;overflow:hidden}
+        #contact::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,137,123,0.1),transparent 70%);pointer-events:none}
+        #contact .section-header h2{color:white}
         #contact .section-header p{color:rgba(255,255,255,0.6)}
-        .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem}
-        .contact-card{background:rgba(255,255,255,0.05);padding:1.25rem;border-radius:6px;border:1px solid rgba(255,255,255,0.1)}
-        .contact-card h4{font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:0.6rem}
+        .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;position:relative;z-index:1}
+        .contact-card{background:rgba(255,255,255,0.05);padding:1.25rem;border-radius:10px;border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)}
+        .contact-card h4{font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4);margin-bottom:0.6rem}
         .contact-card p,.contact-card a{font-size:0.9rem;color:rgba(255,255,255,0.85)}.contact-card a:hover{color:var(--accent-light)}
-        .contact-buttons{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+        .contact-buttons{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;position:relative;z-index:1}
         .btn-light{background:white;color:var(--accent)}.btn-light:hover{background:var(--accent-light);color:white}
-        .btn-outline-light{border:1px solid rgba(255,255,255,0.4);color:white;background:transparent}.btn-outline-light:hover{background:rgba(255,255,255,0.08)}
+        .btn-outline-light{border:1px solid rgba(255,255,255,0.3);color:white;background:transparent}.btn-outline-light:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.5)}
         footer{background:var(--bg-darker);color:rgba(255,255,255,0.4);text-align:center;padding:2rem;font-size:0.8rem}
         footer a{color:rgba(255,255,255,0.6)}footer a:hover{color:var(--accent-light)}
         .footer-links{margin-bottom:0.75rem;display:flex;justify-content:center;gap:1.5rem}
         .mobile-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:5px}
-        .mobile-toggle span{width:20px;height:2px;background:var(--text-primary)}
-        @media(max-width:900px){.mobile-toggle{display:flex}.nav-links{position:absolute;top:100%;left:0;right:0;background:white;flex-direction:column;padding:1rem;display:none;border-bottom:1px solid var(--border)}.nav-links.active{display:flex}.nav-links a{padding:0.75rem 1rem}.hero-container{grid-template-columns:1fr;text-align:center;gap:2rem}.hero-left{margin-bottom:0}.hero-logo{width:160px;height:160px}.hero-right h1{font-size:2rem}.hero-meta{align-items:center}.hero-buttons{justify-content:center}.lab-content,.about-grid{grid-template-columns:1fr}.research-grid,.teaching-grid{grid-template-columns:1fr}.awards-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.pub-item{grid-template-columns:1fr;gap:0.4rem}.people-grid{grid-template-columns:repeat(2,1fr)}section{padding:3rem 1.5rem}}
-        @media(max-width:500px){.skills-grid{grid-template-columns:1fr}.footer-links{flex-direction:column;gap:0.5rem}.people-grid{grid-template-columns:1fr}}
+        .mobile-toggle span{width:20px;height:2px;background:white}
+        @media(max-width:900px){.mobile-toggle{display:flex}.nav-links{position:absolute;top:100%;left:0;right:0;background:var(--bg-dark);flex-direction:column;padding:1rem;display:none;border-bottom:1px solid rgba(255,255,255,0.1)}.nav-links.active{display:flex}.nav-links a{padding:0.75rem 1rem}.hero-container{grid-template-columns:1fr;text-align:center;gap:2rem}.hero-left{order:2}.hero-right{order:1}.hero-visual{width:300px;height:380px}.hero-logo-main{width:140px;height:140px}.hero-photo-float{width:100px;height:100px;top:10px;right:30px}.hero-name-tag{left:50%;transform:translateX(-50%);bottom:40px}.orbit-1{width:220px;height:220px}.orbit-2{width:300px;height:300px}.hero-left h1{font-size:2.2rem}.hero-meta{align-items:center}.hero-buttons{justify-content:center}.lab-content,.about-grid{grid-template-columns:1fr}.research-grid,.teaching-grid{grid-template-columns:1fr}.awards-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.pub-item{grid-template-columns:1fr;gap:0.4rem}.people-grid{grid-template-columns:repeat(2,1fr)}section{padding:3rem 1.5rem}}
+        @media(max-width:500px){.skills-grid{grid-template-columns:1fr}.footer-links{flex-direction:column;gap:0.5rem}.people-grid{grid-template-columns:1fr}.hero-visual{width:240px;height:320px}.hero-logo-main{width:120px;height:120px}.hero-photo-float{width:80px;height:80px;top:0;right:20px}.orbit-1,.orbit-2{display:none}}
     </style>
 </head>
 <body>
-    <nav><div class="nav-container"><a href="#" class="nav-logo"><img src="tasilab-logo.png" alt="TASiLab"><div class="nav-logo-text"><span class="name">TASiLab</span><span class="tagline">Theoretical & Applied Statistical Innovation</span></div></a><button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="#lab">Lab</a></li><li><a href="#people">People</a></li><li><a href="#research">Research</a></li><li><a href="#publications">Publications</a></li><li><a href="#software">Software</a></li><li><a href="#teaching">Teaching</a></li><li><a href="#experience">Experience</a></li><li><a href="#awards">Awards</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+    <nav><div class="nav-container"><a href="#" class="nav-logo"><img src="tasilab-logo.png" alt="TASiLab"><div class="nav-logo-text"><span class="name">TASiLab</span><span class="tagline">Statistical Innovation Lab</span></div></a><button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="#lab">Lab</a></li><li><a href="#people">People</a></li><li><a href="#research">Research</a></li><li><a href="#publications">Publications</a></li><li><a href="#software">Software</a></li><li><a href="#teaching">Teaching</a></li><li><a href="#experience">Experience</a></li><li><a href="#awards">Awards</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
-    <section class="hero"><div class="hero-container"><div class="hero-left"><img src="tasilab-logo.png" alt="TASiLab Logo" class="hero-logo"><p class="hero-lab-name">THEORETICAL & APPLIED<br>STATISTICAL INNOVATION LAB</p></div><div class="hero-right"><h1>Welcome to <span>TASiLab</span></h1><p class="hero-intro">I'm <strong>Azizur Rahman</strong>, a PhD Candidate (ABD) in Biostatistics at the University of Manitoba. My research focuses on developing fast approximate Bayesian estimation algorithms for discrete and continuous time models in intensive longitudinal data.</p><div class="hero-meta"><span>Social Innovation Office, Government of Manitoba, Canada</span><span>Associate Professor (on study leave), Jahangirnagar University</span><span>Expected PhD Graduation: June 2026</span></div><div class="hero-buttons"><a href="CV_of_Azizur_Rahman_Academic.pdf" class="btn btn-primary" download>Download CV</a><a href="https://www.researchgate.net/profile/Azizur-Rahman-9" class="btn btn-outline" target="_blank" rel="noopener">ResearchGate</a><a href="mailto:Azizur.Rahman@gov.mb.ca" class="btn btn-outline">Contact</a></div></div></div></section>
+    <section class="hero"><div class="hero-bg"><div class="hero-glow glow-1"></div><div class="hero-glow glow-2"></div><div class="hero-grid"></div></div><div class="hero-container"><div class="hero-left"><p class="hero-eyebrow">Theoretical & Applied Statistical Innovation</p><h1>Welcome to <span>TASiLab</span></h1><p class="hero-intro">I'm <strong>Azizur Rahman</strong>, a PhD Candidate (ABD) in Biostatistics at the University of Manitoba. My research focuses on developing fast approximate Bayesian estimation algorithms for discrete and continuous time models in intensive longitudinal data.</p><div class="hero-meta"><span>Social Innovation Office, Government of Manitoba, Canada</span><span>Associate Professor (on study leave), Jahangirnagar University</span><span>Expected PhD Graduation: June 2026</span></div><div class="hero-buttons"><a href="CV_of_Azizur_Rahman_Academic.pdf" class="btn btn-primary" download>Download CV</a><a href="https://www.researchgate.net/profile/Azizur-Rahman-9" class="btn btn-outline" target="_blank" rel="noopener">ResearchGate</a><a href="mailto:Azizur.Rahman@gov.mb.ca" class="btn btn-outline">Contact</a></div></div><div class="hero-right"><div class="hero-visual"><div class="hero-accent-dot dot-1"></div><div class="hero-accent-dot dot-2"></div><div class="hero-accent-dot dot-3"></div><div class="hero-orbit orbit-1"></div><div class="hero-orbit orbit-2"></div><div class="hero-logo-main"><img src="tasilab-logo.png" alt="TASiLab"></div><div class="hero-photo-float"><img src="azizur-rahman.jpg" alt="Azizur Rahman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-photo-placeholder" style="display:none">Add photo:<br>azizur-rahman.jpg</div></div><div class="hero-name-tag"><h3>Azizur Rahman</h3><p>PhD Candidate · MPhil</p></div></div></div></div></section>
 
-    <section id="lab"><div class="container"><div class="section-header"><h2>About TASiLab</h2><p>Theoretical and Applied Statistical Innovation Laboratory</p></div><div class="lab-content"><div class="lab-text"><h3>Mission</h3><p>The <strong>TASi Lab</strong> is dedicated to advancing the frontiers of statistical science by integrating rigorous theoretical foundations with cutting-edge applied methodologies. Our mission is to develop innovative statistical models and computational tools that address complex, real-world challenges across diverse domains. We strive to foster collaboration, promote reproducible research, and empower decision-making through robust, data-driven insights.</p><h3>Vision</h3><p>To be a global leader in statistical innovation, shaping the future of data science and analytics through pioneering research and transformative applications. We envision a world where theoretical breakthroughs seamlessly translate into practical solutions, driving progress in science, technology, and society.</p><h3>Ongoing Projects</h3><ul><li>Functional Mixed Effects Models for Partial Functional Data</li><li>Variational Inference for Continuous Time Mixed Effect Hidden Markov Model</li><li>Data Coreset on Ranked Set Sampling for Mixture Models</li><li>Improvement on Multiview Machine Learning Models</li></ul></div><div class="lab-highlights"><div class="highlight-card"><h4>Publications</h4><div class="number">25+</div><div class="label">Peer-reviewed articles</div></div><div class="highlight-card"><h4>Team</h4><div class="number">12+</div><div class="label">Research members</div></div><div class="highlight-card"><h4>Awards</h4><div class="number">4</div><div class="label">Competition wins</div></div><div class="highlight-card"><h4>Grants</h4><div class="number">6</div><div class="label">As Principal Investigator</div></div></div></div></div></section>
+    <section id="lab"><div class="container"><div class="section-header"><h2>About TASiLab</h2><p>Theoretical and Applied Statistical Innovation Laboratory</p></div><div class="lab-content"><div class="lab-text"><h3>Mission</h3><p>The <strong>TASi Lab</strong> is dedicated to advancing the frontiers of statistical science by integrating rigorous theoretical foundations with cutting-edge applied methodologies. Our mission is to develop innovative statistical models and computational tools that address complex, real-world challenges across diverse domains. We strive to foster collaboration, promote reproducible research, and empower decision-making through robust, data-driven insights.</p><h3>Vision</h3><p>To be a global leader in statistical innovation, shaping the future of data science and analytics through pioneering research and transformative applications. We envision a world where theoretical breakthroughs seamlessly translate into practical solutions, driving progress in science, technology, and society.</p><h3>Ongoing Projects</h3><ul><li>Functional Mixed Effects Models for Partial Functional Data</li><li>Variational Inference for Continuous Time Mixed Effect Hidden Markov Model</li><li>Data Coreset on Ranked Set Sampling for Mixture Models</li><li>Improvement on Multiview Machine Learning Models</li></ul></div><div class="lab-highlights"><div class="highlight-card"><h4>Publications</h4><div class="number">25+</div><div class="label">Peer-reviewed articles</div></div><div class="highlight-card"><h4>Team</h4><div class="number">14</div><div class="label">Research members</div></div><div class="highlight-card"><h4>Awards</h4><div class="number">4</div><div class="label">Competition wins</div></div><div class="highlight-card"><h4>Grants</h4><div class="number">6</div><div class="label">As Principal Investigator</div></div></div></div></div></section>
 
-    <section id="people"><div class="container"><div class="section-header"><h2>People</h2><p>Meet the TASiLab team</p></div><div class="people-grid collapsed" id="peopleGrid"><div class="person-card director"><div class="person-avatar">AR</div><h4>Azizur Rahman</h4><div class="role">Principal Investigator</div><div class="affiliation">PhD Candidate, U of Manitoba<br>Assoc. Prof., Jahangirnagar University</div><div class="links"><a href="mailto:Azizur.Rahman@gov.mb.ca">Email</a> <a href="https://www.researchgate.net/profile/Azizur-Rahman-9" target="_blank" rel="noopener">ResearchGate</a></div></div><div class="person-card"><div class="person-avatar">FH</div><h4>Faruk Hasan</h4><div class="role">Research Assistant</div><div class="affiliation">Data Scientist, City Bank PLC</div></div><div class="person-card"><div class="person-avatar">IJ</div><h4>Ishrat Jerin</h4><div class="role">Research Trainee</div><div class="affiliation">Centre for Development Innovation, Dhaka</div></div><div class="person-card"><div class="person-avatar">MA</div><h4>Dr. Md Asaduzzaman</h4><div class="role">Collaborator</div><div class="affiliation">MCH, Upazilla Family Planning, Kamalnagar</div></div><div class="person-card"><div class="person-avatar">IH</div><h4>Ismail Hossain</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">IM</div><h4>Injamul Haque Mithun</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">EH</div><h4>Ehsanul Haque</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">MY</div><h4>Munniara Yeasmin</h4><div class="role">Research Trainee</div><div class="affiliation">MSc, Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">SA</div><h4>Sayed Ahmed</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">SU</div><h4>Shafeel Ummam</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">RR</div><h4>Rokeya Binte Razzak</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">SS</div><h4>Shuvonkor Shuvo</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">IA</div><h4>Istiak Ahmed</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">ShS</div><h4>Sharmin Sultana</h4><div class="role">Research Trainee</div><div class="affiliation">Jahangirnagar University</div></div></div><button class="expand-btn" id="expandBtn" onclick="togglePeople()">Show All Members</button></div></section>
+    <section id="people"><div class="container"><div class="section-header"><h2>People</h2><p>Meet the TASiLab team</p></div><div class="people-grid collapsed" id="peopleGrid"><div class="person-card director"><div class="person-avatar">AR</div><h4>Azizur Rahman</h4><div class="role">Principal Investigator</div><div class="affiliation">PhD Candidate, U of Manitoba<br>Assoc. Prof., Jahangirnagar University</div><div class="links"><a href="mailto:Azizur.Rahman@gov.mb.ca">Email</a> <a href="https://www.researchgate.net/profile/Azizur-Rahman-9" target="_blank" rel="noopener">ResearchGate</a></div></div><div class="person-card"><div class="person-avatar">FH</div><h4>Faruk Hasan</h4><div class="role">Research Associate</div><div class="affiliation">Data Scientist, City Bank PLC<br>MSc, Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">IJ</div><h4>Ishrat Jerin</h4><div class="role">Research Assistant</div><div class="affiliation">Centre for Development Innovation, Dhaka</div></div><div class="person-card"><div class="person-avatar">MA</div><h4>Dr. Md Asaduzzaman</h4><div class="role">Collaborator</div><div class="affiliation">MCH, Upazilla Family Planning, Kamalnagar</div></div><div class="person-card"><div class="person-avatar">IH</div><h4>Ismail Hossain</h4><div class="role">Research Assistant</div><div class="affiliation">Jagannath University</div></div><div class="person-card"><div class="person-avatar">IM</div><h4>Injamul Haque Mithun</h4><div class="role">Research Assistant</div><div class="affiliation">Jagannath University</div></div><div class="person-card"><div class="person-avatar">EH</div><h4>Ehsanul Haque</h4><div class="role">Research Assistant</div><div class="affiliation">Jagannath University</div></div><div class="person-card"><div class="person-avatar">SS</div><h4>Shuvonkor Shuvo</h4><div class="role">Research Assistant</div><div class="affiliation">Jagannath University</div></div><div class="person-card"><div class="person-avatar">MY</div><h4>Munniara Yeasmin</h4><div class="role">Research Assistant</div><div class="affiliation">MSc, Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">SA</div><h4>Sayed Ahmed</h4><div class="role">Research Assistant</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">SU</div><h4>Shafeel Ummam</h4><div class="role">Research Assistant</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">RR</div><h4>Rokeya Binte Razzak</h4><div class="role">Research Assistant</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">IA</div><h4>Istiak Ahmed</h4><div class="role">Research Assistant</div><div class="affiliation">Jahangirnagar University</div></div><div class="person-card"><div class="person-avatar">ShS</div><h4>Sharmin Sultana</h4><div class="role">Research Assistant</div><div class="affiliation">Jahangirnagar University</div></div></div><button class="expand-btn" id="expandBtn" onclick="togglePeople()">Show All Members</button></div></section>
 
     <section id="about"><div class="container"><div class="section-header"><h2>About the Director</h2><p>Background and education</p></div><div class="about-grid"><div class="about-text"><h3>Biography</h3><p><strong>Azizur Rahman</strong> is a PhD Candidate (ABD) in Biostatistics at the Department of Community Health Sciences, University of Manitoba, working under Dr. Depeng Jiang. His thesis focuses on fast approximate Bayesian estimation algorithms for discrete and continuous time models in intensive longitudinal data. Expected graduation: June 2026.</p><p>He is on study leave from Associate Professor at Statistics and Data Science, Jahangirnagar University, Bangladesh. He serves as Program Evaluator at the Social Innovation Office, Government of Manitoba.</p><h3>Education</h3><p><strong>PhD Candidate (ABD)</strong> — Community Health Sciences, University of Manitoba (2019–Present)<br><em>Thesis: Fast Approximate Bayesian Estimation Algorithm for Discrete and Continuous Time Models</em></p><p><strong>M.Phil in Statistics</strong> — Jahangirnagar University (2017)<br><strong>MSc in Statistics</strong> — Jahangirnagar University, 1st Position, CGPA 3.80/4.00 (2008)<br><strong>BSc in Statistics</strong> — Jahangirnagar University, 1st Position, CGPA 3.72/4.00 (2007)</p></div><div class="info-card"><h4>Contact</h4><div class="info-item"><div class="label">Email</div><div class="value"><a href="mailto:Azizur.Rahman@gov.mb.ca">Azizur.Rahman@gov.mb.ca</a></div></div><div class="info-item"><div class="label">Phone</div><div class="value">204-290-7542</div></div><div class="info-item"><div class="label">Location</div><div class="value">Winnipeg, Manitoba, Canada</div></div><div class="info-item"><div class="label">Citizenship</div><div class="value">Canadian Citizen</div></div><div class="info-item"><div class="label">Editorial</div><div class="value">Statistics Editor, Bangladesh J. Infectious Diseases</div></div></div></div></div></section>
 
@@ -151,18 +180,6 @@
 
     <footer><div class="footer-links"><a href="https://umanitoba.ca" target="_blank" rel="noopener">University of Manitoba</a><a href="https://juniv.edu" target="_blank" rel="noopener">Jahangirnagar University</a><a href="https://azizurrahmanweb.github.io/" target="_blank" rel="noopener">Personal Site</a></div><p>© 2026 TASiLab — Theoretical and Applied Statistical Innovation Lab</p></footer>
 
-    <script>
-    function togglePeople(){
-        const grid=document.getElementById('peopleGrid');
-        const btn=document.getElementById('expandBtn');
-        if(grid.classList.contains('collapsed')){
-            grid.classList.remove('collapsed');
-            btn.textContent='Show Less';
-        }else{
-            grid.classList.add('collapsed');
-            btn.textContent='Show All Members';
-        }
-    }
-    </script>
+    <script>function togglePeople(){const g=document.getElementById('peopleGrid'),b=document.getElementById('expandBtn');if(g.classList.contains('collapsed')){g.classList.remove('collapsed');b.textContent='Show Less'}else{g.classList.add('collapsed');b.textContent='Show All Members'}}</script>
 </body>
 </html>
