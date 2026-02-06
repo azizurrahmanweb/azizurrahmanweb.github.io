@@ -1703,418 +1703,417 @@
             </div>
         </div>
     </section>
-    <section id="people">
-        <div class="container">
-            <div class="section-header">
-                <h2>
-                    People
-                </h2>
-                <p>
-                    Meet the TASiLab team
-                </p>
+<section id="people">
+    <div class="container">
+        <div class="section-header">
+            <h2>
+                People
+            </h2>
+            <p>
+                Meet the TASiLab team
+            </p>
+        </div>
+        <div class="people-grid collapsed" id="peopleGrid">
+            <!-- Director -->
+            <div class="person-card director" onclick="openModal('director')">
+                <div class="person-avatar">
+                    <img alt="AR" onerror="this.style.display='none';this.parentElement.innerHTML='AR'"
+                        src="azizur-rahman.png" />
+                </div>
+                <h4>
+                    Azizur Rahman
+                </h4>
+                <div class="role">
+                    Principal Investigator
+                </div>
+                <div class="affiliation">
+                    PhD Candidate, U of Manitoba
+                    <br />
+                    Assoc. Prof., Jahangirnagar University
+                </div>
+                <div class="links">
+                    <a onclick="event.stopPropagation();window.location='mail'+'to:'+'Azizur.Rahman'+'@'+'gov.mb.ca'">
+                        Email
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Azizur-Rahman-9" onclick="event.stopPropagation()"
+                        target="_blank">
+                        ResearchGate
+                    </a>
+                </div>
             </div>
-            <div class="people-grid collapsed" id="peopleGrid">
-<div class="person-card director" onclick="openModal('director')">
-        <div class="person-avatar">
-            <img alt="AR" onerror="this.style.display='none';this.parentElement.innerHTML='AR'"
-                src="azizur-rahman.png" />
-        </div>
-        <h4>
-            Azizur Rahman
-        </h4>
-        <div class="role">
-            Principal Investigator
-        </div>
-        <div class="affiliation">
-            PhD Candidate, U of Manitoba
-            <br />
-            Assoc. Prof., Jahangirnagar University
-        </div>
-        <div class="links">
+
+            <!-- Advisor -->
+            <div class="person-card" onclick="openModal('rois')" style="border-color: var(--accent-light); background: linear-gradient(to bottom, rgba(77, 182, 172, 0.02), white)">
+                <div class="person-avatar">
+                    <img alt="RR" onerror="this.style.display='none';this.parentElement.innerHTML='RR'"
+                        src="team-photos/rumana-rois.jpg" />
+                </div>
+                <h4>
+                    Dr. Rumana Rois
+                </h4>
+                <div class="role">
+                    Advisor
+                </div>
+                <div class="affiliation">
+                    Professor &amp; Chairman
+                    <br />
+                    Dept. of Statistics and Data Science, JU
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+
+            <!-- Research Associate - Faruk -->
+            <div class="person-card" onclick="openModal('faruk')">
+                <div class="person-avatar">
+                    <img alt="FH" onerror="this.style.display='none';this.parentElement.innerHTML='FH'"
+                        src="team-photos/faruk-hasan.jpg" />
+                </div>
+                <h4>
+                    Md Faruk Hasan
+                </h4>
+                <div class="role">
+                    Research Associate
+                </div>
+                <div class="affiliation">
+                    Data Scientist
+                    <br />
+                    City Bank PLC
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+
+            <div class="person-card" onclick="openModal('methun')">
+                <div class="person-avatar">
+                    <img alt="IM" onerror="this.style.display='none';this.parentElement.innerHTML='IM'"
+                        src="team-photos/injamul-haq-methun.jpg" />
+                </div>
+                <h4>
+                    Md Injamul Haq Methun
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Assistant Professor
+                    <br />
+                    BIGM, Dhaka
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
             
-                onclick="event.stopPropagation();window.location='mail'+'to:'+'Azizur.Rahman'+'@'+'gov.mb.ca'">
-                Email
-            </a>
-            <a href="https://www.researchgate.net/profile/Azizur-Rahman-9" onclick="event.stopPropagation()"
-                target="_blank">
-                ResearchGate
-            </a>
-        </div>
-    </div>
-
-    <!-- Advisor -->
-    <div class="person-card" onclick="openModal('rois')" style="border-color: var(--accent-light); background: linear-gradient(to bottom, rgba(77, 182, 172, 0.02), white)">
-        <div class="person-avatar">
-            <img alt="RR" onerror="this.style.display='none';this.parentElement.innerHTML='RR'"
-                src="team-photos/rumana-rois.jpg" />
-        </div>
-        <h4>
-            Dr. Rumana Rois
-        </h4>
-        <div class="role">
-            Advisor
-        </div>
-        <div class="affiliation">
-            Professor &amp; Chairman
-            <br />
-            Dept. of Statistics and Data Science, JU
-        </div>
-        <div class="view-more">
-            Click for details →
-        </div>
-    </div>
-
-    <!-- Research Associate - Faruk -->
-    <div class="person-card" onclick="openModal('faruk')">
-        <div class="person-avatar">
-            <img alt="FH" onerror="this.style.display='none';this.parentElement.innerHTML='FH'"
-                src="team-photos/faruk-hasan.jpg" />
-        </div>
-        <h4>
-            Md Faruk Hasan
-        </h4>
-        <div class="role">
-            Research Associate
-        </div>
-        <div class="affiliation">
-            Data Scientist
-            <br />
-            City Bank PLC
-        </div>
-        <div class="view-more">
-            Click for details →
-        </div>
-    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
+            <!-- Continue with rest of the team members... -->
+            <div class="person-card" onclick="openModal('riday')">
+                <div class="person-avatar">
+                    <img alt="IR" onerror="this.style.display='none';this.parentElement.innerHTML='IR'"
+                        src="team-photos/ismail-hossain-riday.jpg" />
                 </div>
-                <div class="person-card" onclick="openModal('methun')">
-                    <div class="person-avatar">
-                        <img alt="IM" onerror="this.style.display='none';this.parentElement.innerHTML='IM'"
-                            src="team-photos/injamul-haq-methun.jpg" />
-                    </div>
-                    <h4>
-                        Md Injamul Haq Methun
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Assistant Professor
-                        <br />
-                        BIGM, Dhaka
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
+                <h4>
+                    Md. Ismail Hossain Riday
+                </h4>
+                <div class="role">
+                    Research Assistant
                 </div>
-                <div class="person-card" onclick="openModal('riday')">
-                    <div class="person-avatar">
-                        <img alt="IR" onerror="this.style.display='none';this.parentElement.innerHTML='IR'"
-                            src="team-photos/ismail-hossain-riday.jpg" />
-                    </div>
-                    <h4>
-                        Md. Ismail Hossain Riday
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        GTA &amp; PhD Aspirant
-                        <br />
-                        Mississippi State University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
+                <div class="affiliation">
+                    GTA &amp; PhD Aspirant
+                    <br />
+                    Mississippi State University
                 </div>
-                <div class="person-card" onclick="openModal('sarkar')">
-                    <div class="person-avatar">
-                        <img alt="SS" onerror="this.style.display='none';this.parentElement.innerHTML='SS'"
-                            src="team-photos/shuvongkar-sarkar.jpg" />
-                    </div>
-                    <h4>
-                        Shuvongkar Sarkar
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Lecturer
-                        <br />
-                        BRAC University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('ehsan')">
-                    <div class="person-avatar">
-                        <img alt="EA" onerror="this.style.display='none';this.parentElement.innerHTML='EA'"
-                            src="team-photos/ehsan-ahmed.jpg" />
-                    </div>
-                    <h4>
-                        Ehsan Ahmed
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Lecturer
-                        <br />
-                        Tejgaon College
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('ishrat')">
-                    <div class="person-avatar">
-                        <img alt="IJ" onerror="this.style.display='none';this.parentElement.innerHTML='IJ'"
-                            src="team-photos/ishrat-jerin.jpg" />
-                    </div>
-                    <h4>
-                        Ishrat Jerin
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        MIS Officer
-                        <br />
-                        Centre for Development Innovation and Practices
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('asaduzzaman')">
-                    <div class="person-avatar">
-                        <img alt="MA" onerror="this.style.display='none';this.parentElement.innerHTML='MA'"
-                            src="team-photos/md-asaduzzaman.jpg" />
-                    </div>
-                    <h4>
-                        Dr. Md Asaduzzaman
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Medical Officer, MCH
-                        <br />
-                        DGFP
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('shorif')">
-                    <div class="person-avatar">
-                        <img alt="AS" onerror="this.style.display='none';this.parentElement.innerHTML='AS'"
-                            src="team-photos/abdul-al-shorif.jpg" />
-                    </div>
-                    <h4>
-                        Abdul Al Shorif
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        M.Phil. Candidate
-                        <br />
-                        Jahangirnagar University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('istiak')">
-                    <div class="person-avatar">
-                        <img alt="IA" onerror="this.style.display='none';this.parentElement.innerHTML='IA'"
-                            src="team-photos/istiak-ahmed.jpg" />
-                    </div>
-                    <h4>
-                        Istiak Ahmed
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Scientific Officer
-                        <br />
-                        BARI
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('shawan')">
-                    <div class="person-avatar">
-                        <img alt="AU" onerror="this.style.display='none';this.parentElement.innerHTML='AU'"
-                            src="team-photos/aftab-uddin-shawan.jpg" />
-                    </div>
-                    <h4>
-                        Md. Aftab Uddin Shawan
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Hydrogeologist
-                        <br />
-                        DWASA
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('shafeel')">
-                    <div class="person-avatar">
-                        <img alt="SU" onerror="this.style.display='none';this.parentElement.innerHTML='SU'"
-                            src="team-photos/shafeel-umam.jpg" />
-                    </div>
-                    <h4>
-                        Shafeel Umam
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Doctoral Student
-                        <br />
-                        Saint Louis University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('rubaiya')">
-                    <div class="person-avatar">
-                        <img alt="RR" onerror="this.style.display='none';this.parentElement.innerHTML='RR'"
-                            src="team-photos/rubaiya-binte-razzak.jpg" />
-                    </div>
-                    <h4>
-                        Rubaiya Binte Razzak
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Sr. Data Analyst
-                        <br />
-                        State of Iowa, USA
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('munni')">
-                    <div class="person-avatar">
-                        <img alt="MY" onerror="this.style.display='none';this.parentElement.innerHTML='MY'"
-                            src="team-photos/munniara-yesmin-munni.png" />
-                    </div>
-                    <h4>
-                        Munniara Yesmin Munni
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        PM&amp;E Officer
-                        <br />
-                        CCDB
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('sayeed')">
-                    <div class="person-avatar">
-                        <img alt="AS" onerror="this.style.display='none';this.parentElement.innerHTML='AS'"
-                            src="team-photos/abu-sayeed.jpg" />
-                    </div>
-                    <h4>
-                        Md. Abu Sayeed
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Officer, Data Analytics
-                        <br />
-                        DRI, Dhaka
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('sharmin')">
-                    <div class="person-avatar">
-                        <img alt="SA" onerror="this.style.display='none';this.parentElement.innerHTML='SA'"
-                            src="team-photos/sharmin-akther.jpg" />
-                    </div>
-                    <h4>
-                        Sharmin Akther
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        Lecturer, FSIT
-                        <br />
-                        Daffodil International University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('pingky')">
-                    <div class="person-avatar">
-                        <img alt="JP" onerror="this.style.display='none';this.parentElement.innerHTML='JP'"
-                            src="team-photos/jakia-sultana-pingky.jpg" />
-                    </div>
-                    <h4>
-                        Jakia Sultana Pingky
-                    </h4>
-                    <div class="role">
-                        Research Assistant
-                    </div>
-                    <div class="affiliation">
-                        MSc Student
-                        <br />
-                        Jahangirnagar University
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
-                </div>
-                <div class="person-card" onclick="openModal('sakaouth')">
-                    <div class="person-avatar">
-                        <img alt="SH" onerror="this.style.display='none';this.parentElement.innerHTML='SH'"
-                            src="team-photos/Sakaouth-Hossain.jpeg" />
-                    </div>
-                    <h4>
-                        Md. Sakaouth Hossain
-                    </h4>
-                    <div class="role">
-                        Collaborator
-                    </div>
-                    <div class="affiliation">
-                        PhD Candidate
-                        <br />
-                        University of Otago, New Zealand
-                    </div>
-                    <div class="view-more">
-                        Click for details →
-                    </div>
+                <div class="view-more">
+                    Click for details →
                 </div>
             </div>
-            <button class="expand-btn" id="expandBtn" onclick="togglePeople()">
-                Show All Members
-            </button>
+            <div class="person-card" onclick="openModal('sarkar')">
+                <div class="person-avatar">
+                    <img alt="SS" onerror="this.style.display='none';this.parentElement.innerHTML='SS'"
+                        src="team-photos/shuvongkar-sarkar.jpg" />
+                </div>
+                <h4>
+                    Shuvongkar Sarkar
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Lecturer
+                    <br />
+                    BRAC University
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('ehsan')">
+                <div class="person-avatar">
+                    <img alt="EA" onerror="this.style.display='none';this.parentElement.innerHTML='EA'"
+                        src="team-photos/ehsan-ahmed.jpg" />
+                </div>
+                <h4>
+                    Ehsan Ahmed
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Lecturer
+                    <br />
+                    Tejgaon College
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('ishrat')">
+                <div class="person-avatar">
+                    <img alt="IJ" onerror="this.style.display='none';this.parentElement.innerHTML='IJ'"
+                        src="team-photos/ishrat-jerin.jpg" />
+                </div>
+                <h4>
+                    Ishrat Jerin
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    MIS Officer
+                    <br />
+                    Centre for Development Innovation and Practices
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('asaduzzaman')">
+                <div class="person-avatar">
+                    <img alt="MA" onerror="this.style.display='none';this.parentElement.innerHTML='MA'"
+                        src="team-photos/md-asaduzzaman.jpg" />
+                </div>
+                <h4>
+                    Dr. Md Asaduzzaman
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Medical Officer, MCH
+                    <br />
+                    DGFP
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('shorif')">
+                <div class="person-avatar">
+                    <img alt="AS" onerror="this.style.display='none';this.parentElement.innerHTML='AS'"
+                        src="team-photos/abdul-al-shorif.jpg" />
+                </div>
+                <h4>
+                    Abdul Al Shorif
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    M.Phil. Candidate
+                    <br />
+                    Jahangirnagar University
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('istiak')">
+                <div class="person-avatar">
+                    <img alt="IA" onerror="this.style.display='none';this.parentElement.innerHTML='IA'"
+                        src="team-photos/istiak-ahmed.jpg" />
+                </div>
+                <h4>
+                    Istiak Ahmed
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Scientific Officer
+                    <br />
+                    BARI
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('shawan')">
+                <div class="person-avatar">
+                    <img alt="AU" onerror="this.style.display='none';this.parentElement.innerHTML='AU'"
+                        src="team-photos/aftab-uddin-shawan.jpg" />
+                </div>
+                <h4>
+                    Md. Aftab Uddin Shawan
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Hydrogeologist
+                    <br />
+                    DWASA
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('shafeel')">
+                <div class="person-avatar">
+                    <img alt="SU" onerror="this.style.display='none';this.parentElement.innerHTML='SU'"
+                        src="team-photos/shafeel-umam.jpg" />
+                </div>
+                <h4>
+                    Shafeel Umam
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Doctoral Student
+                    <br />
+                    Saint Louis University
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('rubaiya')">
+                <div class="person-avatar">
+                    <img alt="RR" onerror="this.style.display='none';this.parentElement.innerHTML='RR'"
+                        src="team-photos/rubaiya-binte-razzak.jpg" />
+                </div>
+                <h4>
+                    Rubaiya Binte Razzak
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Sr. Data Analyst
+                    <br />
+                    State of Iowa, USA
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('munni')">
+                <div class="person-avatar">
+                    <img alt="MY" onerror="this.style.display='none';this.parentElement.innerHTML='MY'"
+                        src="team-photos/munniara-yesmin-munni.png" />
+                </div>
+                <h4>
+                    Munniara Yesmin Munni
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    PM&amp;E Officer
+                    <br />
+                    CCDB
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('sayeed')">
+                <div class="person-avatar">
+                    <img alt="AS" onerror="this.style.display='none';this.parentElement.innerHTML='AS'"
+                        src="team-photos/abu-sayeed.jpg" />
+                </div>
+                <h4>
+                    Md. Abu Sayeed
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Officer, Data Analytics
+                    <br />
+                    DRI, Dhaka
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('sharmin')">
+                <div class="person-avatar">
+                    <img alt="SA" onerror="this.style.display='none';this.parentElement.innerHTML='SA'"
+                        src="team-photos/sharmin-akther.jpg" />
+                </div>
+                <h4>
+                    Sharmin Akther
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    Lecturer, FSIT
+                    <br />
+                    Daffodil International University
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('pingky')">
+                <div class="person-avatar">
+                    <img alt="JP" onerror="this.style.display='none';this.parentElement.innerHTML='JP'"
+                        src="team-photos/jakia-sultana-pingky.jpg" />
+                </div>
+                <h4>
+                    Jakia Sultana Pingky
+                </h4>
+                <div class="role">
+                    Research Assistant
+                </div>
+                <div class="affiliation">
+                    MSc Student
+                    <br />
+                    Jahangirnagar University
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
+            <div class="person-card" onclick="openModal('sakaouth')">
+                <div class="person-avatar">
+                    <img alt="SH" onerror="this.style.display='none';this.parentElement.innerHTML='SH'"
+                        src="team-photos/Sakaouth-Hossain.jpeg" />
+                </div>
+                <h4>
+                    Md. Sakaouth Hossain
+                </h4>
+                <div class="role">
+                    Collaborator
+                </div>
+                <div class="affiliation">
+                    PhD Candidate
+                    <br />
+                    University of Otago, New Zealand
+                </div>
+                <div class="view-more">
+                    Click for details →
+                </div>
+            </div>
         </div>
-    </section>
+        <button class="expand-btn" id="expandBtn" onclick="togglePeople()">
+            Show All Members
+        </button>
+    </div>
+</section>
     <!-- Modal for Team Member Details -->
     <div class="modal" id="memberModal" onclick="if(event.target===this) closeModal()">
         <div class="modal-content">
